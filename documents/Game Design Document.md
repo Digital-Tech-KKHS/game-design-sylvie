@@ -79,6 +79,7 @@ From the countryside where climate change has ruined the land. her family has no
 - leaving home
 - stealing the gem(cutscene)
 - staying away from police
+-seeing devastation from climate change
 - completing tasks to get a train ticket out of the city (meets character "go to ** and get me ** and i will get you **")
 - getting a train ticket and going home with money 
 
@@ -101,14 +102,14 @@ person in control of water.
 ## Supporting Character #1
  Backstory: has worked as a train conducter for years but becasue of the changes in climate and power has no water. Train conducter will let her on train if she gets him water.
 
- Personality:
+ Personality: gruff, difficult, kind
 
  Appearance:
 
  Special abilities:
 
 ## Supporting Character #2
- Backstory:
+ Backstory: 
 
  Personality:
 
@@ -158,21 +159,21 @@ i will use python arcade in vs coded.
 
 # Required Assets
 ## Art 
-i will have two maps, one of her hometown (smaller) and one of the city (bigger) animations for enemies, main character and other relevant characters which require it.. 
+i will have two maps, one of her hometown (smaller) and one of the city (bigger) animations for enemies, main character and other relevant characters which require it.
 ### Objects
 
 ### Characters and Animations
 
 Character #1
-
+mc: running, jumping, walking, crouch, idle
 ...
 
 Character #2
-
+police character: running, walking, idle
 ...
 
 Character #3
-
+train conducter/ water master: idle, walk/ run
 ...
 
 ### Tiles
@@ -182,10 +183,11 @@ Character #3
 ### Sound effects
 
 ### Music
-
+will create my own music
 ### Voice
+n/a
 ## Text
-
+there will be text
 
 # Relevant Implications
 Choose 3 relevant implications. Discuss how you will ensure these are addressed. 
