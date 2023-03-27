@@ -223,7 +223,7 @@ class MyGame(arcade.View):
             
 
         #removing 1 health on collision with anything on enemy layer
-        colliding = arcade.check_for_collision_with_list(self.player, self.scene['enemy'])
+        colliding = arcade.check_for_collision_with_list(self.player, self.scene['donttouch'])
         if colliding:
             self.HUD['health'][-1].kill()
             self.player.center_x = 100
