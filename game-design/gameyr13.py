@@ -17,8 +17,12 @@ CHARACTER_SCALING = 0.8
 class Window(arcade.Window):
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
-        self.Game_View = MyGame()
-        self.show_view(self.Game_View)
+        self.game_view = MyGame()
+        self.show_view(self.game_view)
+
+#    def on_draw(self):
+#        self.clear()
+#         self.
 
 #player textures 
 class Entity(arcade.Sprite):
@@ -81,21 +85,23 @@ class MyGame(arcade.View):
         self.HUD = arcade.Scene()
         self.scene.add_sprite('player', self.player)
 
+    #camera
+        self.camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.HUD_camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
+
         #scene/camera etc 
-        def on_draw(self):
-            self.clear()
-            self.camera.use()
-            self.scene.draw()
+    def on_draw(self):
+        self.clear()
+        self.camera.use()
+        self.scene.draw()
+        self.HUD_camera.use()
+        self.HUD.draw()
 
-            self.HUD_camera.use()
-            self.HUD.draw()
-
-        def on_update(self, delta_time: float):
-            self.player.update()
-            self.player.update_animation()
-            self.physics_engine.update()
-            self.scene.update()
-            self.center_camera_on_player()
+    def on_update(self, delta_time: float):
+        self.player.update()
+        self.player.update_animation()
+        self.scene.update()
+        self.center_camera_on_player()
 
     #cameras
     def center_camera_on_player(self):
@@ -111,18 +117,24 @@ class MyGame(arcade.View):
 
     #controls
     def on_key_press(self,symbol: int, modifiers: int):
-        if symbol == arcade.key.SPACE and self.physics_engine.can_jump():
-            self.player.change_y = 5
+        if symbol == arcade.key.W:
+            self.player.change_y = 3
         if symbol == arcade.key.A:
             self.player.change_x = -3
+        if symbol == arcade.key.S:
+            self.player.change_y = -3
         if symbol == arcade.key.D:
             self.player.change_x = 3
 
     def on_key_release(self, symbol: int, modifiers: int):
         if symbol == arcade.key.A or symbol == arcade.key.D:
             self.player.change_x = 0
+        if symbol == arcade.key.W or symbol == arcade.key.S:
+            self.player.change_y = 0
 
 
 
 game = Window()
+#game_view = MyGame()
+#game.show_view(game_view)
 arcade.run()
