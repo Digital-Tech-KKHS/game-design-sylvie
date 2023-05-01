@@ -11,9 +11,19 @@
             "id": "9974697dfede1243",
             "type": "leaf",
             "state": {
+              "type": "kanban",
+              "state": {
+                "file": "Kanban.md"
+              }
+            }
+          },
+          {
+            "id": "9f9f31bc2c8d0374",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "Final Hand in statement .md",
+                "file": "testing-and-trialing/sprints/sprint 1.md",
                 "mode": "source",
                 "source": false
               }
@@ -27,7 +37,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -77,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "83a27d35d91afd1d",
@@ -93,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Final Hand in statement .md",
+                "file": "testing-and-trialing/sprints/sprint 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Final Hand in statement .md",
+                "file": "testing-and-trialing/sprints/sprint 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Final Hand in statement .md"
+                "file": "testing-and-trialing/sprints/sprint 1.md"
               }
             }
           },
@@ -173,14 +185,19 @@
       "obsidian-spaced-repetition:Review flashcards": false
     }
   },
-  "active": "9974697dfede1243",
+  "active": "9f9f31bc2c8d0374",
   "lastOpenFiles": [
+    "Kanban.md",
+    "testing-and-trialing/sprints/sprint 1.md",
+    "Pasted image 20230426102625.png",
+    "Pasted image 20230426102123.png",
+    "sprint-docs/Sprint Document template.md",
+    "Final Hand in statement .md",
+    "sprint-docs/Untitled.md",
+    "testing-and-trialing/sprints",
     "Final Review.md",
     "Game Design Document.md",
-    "Kanban.md",
-    "Final Hand in statement .md",
     "testing-and-trialing/Trialing Example.md",
-    "sprint-docs/Sprint Document template.md",
     "readme.md.md",
     "sprint-docs/What is a Sprint.md",
     "task/year-12/Marking Schedule.md",
