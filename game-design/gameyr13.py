@@ -10,17 +10,22 @@ root_folder = Path(__file__).parent
 SCREEN_WIDTH = 1440
 SCREEN_HEIGHT = 845
 SCREEN_TITLE = 'Year 13 game'
+MOVEMENT_SPEED = 3
 
 # Keep player from going too fast
-PLAYER_MAX_HORIZONTAL_SPEED = 450
-PLAYER_MAX_VERTICAL_SPEED = 1600
+PLAYER_MAX_HORIZONTAL_SPEED = 300
+PLAYER_MAX_VERTICAL_SPEED = 300
+DAMPING = 0.03
 
 # Friction between objects
-PLAYER_FRICTION = 1.0
+PLAYER_FRICTION = 0.6
 WALL_FRICTION = 0.7 
 
 # Mass (defaults to 1)
 PLAYER_MASS = 2.0 
+
+# Force applied to player:
+PLAYER_MOVE_FORCE = 4000
 
 #scaling to change characters from original size
 CHARACTER_SCALING = 0.8
@@ -87,6 +92,11 @@ class MyGame(arcade.View):
         self.reset_score = True
         self.wall_list = None
    
+        # Track the current state of what key is pressed
+        self.A_pressed = False
+        self.D_pressed = False
+        self.W_pressed = False
+        self.S_pressed = False
 
         self.setup()
         self.walk_textures =[]
@@ -107,33 +117,6 @@ class MyGame(arcade.View):
         #size of character
         self.player.scale = 0.8
 
-        # #walls PLEASE
-        # self.HUD.add_sprite('walls')
-        # for x in range(0, SCREEN_WIDTH + 1):
-        #     wall = arcade.Sprite('walls', CHARACTER_SCALING)
-
-        #     wall.center_x = x
-        #     wall.center_y = 0
-        #     self.wall_list.append(wall)
-
-        #     wall = arcade.Sprite('walls', CHARACTER_SCALING)
-
-        #     wall.center_x = x
-        #     wall.center_y = SCREEN_HEIGHT
-        #     self.wall_list.append(wall)
-
-        # for y in range(SCREEN_HEIGHT):
-        #     wall = arcade.Sprite('walls', CHARACTER_SCALING)
-
-        #     wall.center_x = 0 
-        #     wall.center_y = y
-        #     self.wall_list.append(wall)
-
-        #     wall = arcade.Sprite('walls', CHARACTER_SCALING) 
-
-        #     wall.center_x = SCREEN_WIDTH
-        #     wall.center_y = y
-        #     self.wall_list.append(wall)
 
 
         #tilemap
@@ -162,6 +145,7 @@ class MyGame(arcade.View):
                                 friction=PLAYER_FRICTION,
                                 mass=PLAYER_MASS,
                                 moment=arcade.PymunkPhysicsEngine.MOMENT_INF,
+                                damping=DAMPING,
                                 collision_type="player",
                                 max_horizontal_velocity=PLAYER_MAX_HORIZONTAL_SPEED,
                                 max_vertical_velocity=PLAYER_MAX_VERTICAL_SPEED)
@@ -186,13 +170,7 @@ class MyGame(arcade.View):
         self.HUD_camera.use()
         self.HUD.draw()
 
-    def on_update(self, delta_time: float):
-        self.player.update()
-        self.player.update_animation()
-        # self.scene.update()
-        self.physics_engine.step()
-        self.center_camera_on_player()
-
+    
         
 
     #cameras
@@ -208,23 +186,52 @@ class MyGame(arcade.View):
 
 
     #controls
-    def on_key_press(self,symbol: int, modifiers: int):
-        if symbol == arcade.key.W:
-            self.player.change_y = 3
-        if symbol == arcade.key.A:
-            self.player.change_x = -3
-        if symbol == arcade.key.S:
-            self.player.change_y = -3
-        if symbol == arcade.key.D:
-            self.player.change_x = 3
+    def on_key_press(self, key: int, modifiers: int):
+        if key == arcade.key.W:
+            self.W_pressed = True
+        elif key == arcade.key.A:
+            self.A_pressed = True
+        elif key == arcade.key.S:
+            self.S_pressed = True
+        elif key == arcade.key.D:
+            self.D_pressed = True
 
-    def on_key_release(self, symbol: int, modifiers: int):
-        if symbol == arcade.key.A or symbol == arcade.key.D:
-            self.player.change_x = 0
-        if symbol == arcade.key.W or symbol == arcade.key.S:
-            self.player.change_y = 0
+    def on_key_release(self, key: int, modifiers: int):
+        if key == arcade.key.W:
+            self.W_pressed = False 
+        elif key == arcade.key.A:
+            self.A_pressed = False
+        elif key == arcade.key.S:
+            self.S_pressed = False
+        elif key == arcade.key.D:
+            self.D_pressed = False
+
+    def on_update(self, delta_time: float):
+        
+        # Calculate speed based on the keys pressed
+        self.player.change_x = 0
+        self.player.change_y = 0
+
+        if self.W_pressed and not self.S_pressed:
+            force = (0, PLAYER_MOVE_FORCE)
+            self.physics_engine.apply_force(self.player, force)
+        elif self.S_pressed and not self.W_pressed:
+            force = (0, -PLAYER_MOVE_FORCE)
+            self.physics_engine.apply_force(self.player, force)
+        if self.A_pressed and not self.D_pressed:
+            self.player.change_x = -MOVEMENT_SPEED
+            force = (-PLAYER_MOVE_FORCE, 0)
+            self.physics_engine.apply_force(self.player, force)
+        elif self.D_pressed and not self.A_pressed:
+            force = (PLAYER_MOVE_FORCE, 0)
+            self.physics_engine.apply_force(self.player, force)
 
 
+        self.player.update()
+        self.player.update_animation()
+        # self.scene.update()
+        self.physics_engine.step()
+        self.center_camera_on_player()
 
 game = Window()
 arcade.run()
