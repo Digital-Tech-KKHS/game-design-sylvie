@@ -4,9 +4,9 @@ from pathlib import Path
 from tkinter import Scale	
 from arcade.pymunk_physics_engine import PymunkPhysicsEngine
 
+
 root_folder = Path(__file__).parent
 
-#constants
 SCREEN_WIDTH = 1440
 SCREEN_HEIGHT = 845
 SCREEN_TITLE = 'Year 13 game'
@@ -15,7 +15,8 @@ MOVEMENT_SPEED = 3
 # Keep player from going too fast
 PLAYER_MAX_HORIZONTAL_SPEED = 300
 PLAYER_MAX_VERTICAL_SPEED = 300
-DAMPING = 0.03
+DAMPING = 0.1
+
 
 # Friction between objects
 PLAYER_FRICTION = 0.6
@@ -30,6 +31,7 @@ PLAYER_MOVE_FORCE = 4000
 #scaling to change characters from original size
 CHARACTER_SCALING = 0.8
 
+
 #creating game window
 class Window(arcade.Window):
     def __init__(self):
@@ -37,7 +39,6 @@ class Window(arcade.Window):
         self.game_view = MyGame()
         self.Start_View = StartView()
         self.show_view(self.Start_View)
-      #  self.show_view(self.game_view)
 
 #starting screen
 class StartView(arcade.View):
@@ -58,14 +59,16 @@ class StartView(arcade.View):
 #player textures 
 class Entity(arcade.Sprite):
     def __init__(self):
-        super().__init__(Path(__file__).parent.joinpath(f'tempplayer.png'))
+        super().__init__(Path(__file__).parent.joinpath(f'spritefrontfacing.png'))
         self.walk_textures = []
-        self.idle_textures = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'tempplayer.png'))
+        self.idle_textures = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'spritefrontfacing.png'))
         self.face_direction = 0
         self.current_texture = 0
         self.cur_texture_index = 0
         self.odo = 0
         self.scale = CHARACTER_SCALING
+
+
 
 class Player(Entity):
     def __init__(self):
@@ -73,7 +76,30 @@ class Player(Entity):
 
         self.idle_animating = False
         self.idle_odo = 1
-        self.current_chunk_texture = 0        
+        self.current_chunk_texture = 0 
+
+class Enemy(arcade.Sprite):
+    def __init__(self):
+        super().__init__(Path(__file__).parent.joinpath(f'temp_enemy.png'))
+        self.walk_textures = []
+        self.idle_textures = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'temp_enemy.png'))
+        self.face_direction = 0
+        self.current_texture = 0
+        self.cur_texture_index = 0
+        self.odo = 0
+        self.scale = CHARACTER_SCALING
+
+class Enemy(Entity):
+    def __init__(self, name_folder, name_file):
+
+        # Setup parent class
+        super().__init__(name_folder, name_file)
+
+        self.idle_animating = False
+        self.idle_odo = 1
+        self.current_chunk_texture = 0 
+
+       
 
 #gameview window
 class MyGame(arcade.View):
@@ -91,6 +117,7 @@ class MyGame(arcade.View):
         self.level = 0
         self.reset_score = True
         self.wall_list = None
+        self.enemy_list = None
    
         # Track the current state of what key is pressed
         self.A_pressed = False
@@ -100,7 +127,7 @@ class MyGame(arcade.View):
 
         self.setup()
         self.walk_textures =[]
-        self.idle_textures = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'tempplayer.png'))
+        self.idle_textures = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'spritefrontfacing.png'))
         self.face_direction = 0
         self.current_texture = 0
         self.odo = 0
@@ -108,6 +135,7 @@ class MyGame(arcade.View):
     def setup(self):
         self.player = Player()
         self.wall_list = arcade.SpriteList()
+        self.enemy_list = arcade.SpriteList()
 
 
         #where character spawns
@@ -116,7 +144,6 @@ class MyGame(arcade.View):
 
         #size of character
         self.player.scale = 0.8
-
 
 
         #tilemap
@@ -130,8 +157,7 @@ class MyGame(arcade.View):
 
         self.HUD = arcade.Scene()
         self.scene.add_sprite('player', self.player)
-        
-
+ 
      
 
 

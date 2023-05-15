@@ -11,28 +11,32 @@ kanban-plugin: basic
 
 ## To do
 
-- [ ] MVP
 - [ ] character animation
-- [ ] police/enemy
 
 
 ## Doing
 
-- [ ] basic character design
+- [ ] MVP
 - [ ] basic map of city
 - [ ] win/ lose/ start screen
 - [ ] create tilesets
+- [ ] police/enemy
 
 
 ## Testing \ Trialing
 
-- [ ] 2d vs topdown
+- [ ] enemy design
+- [ ] what people prefer for enemy function
 
 
 ## Complete 🎈🎉✨
 
 - [ ] begin game code
+- [ ] walls
+- [ ] 2d vs topdown
 - [ ] start screen
+- [ ] basic character design
+- [ ] physics engine
 
 
 

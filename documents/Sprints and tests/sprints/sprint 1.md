@@ -4,12 +4,12 @@
 
 **Sprint Number:** 1
 
-**Start Date:**
+**Start Date:** 22nd march
 
-**End Date:**
+**End Date:** 3rd april
 
 **Work hard rating**
-☆☆☆☆☆
+☆☆☆☆
 
 # Project at the start of the sprint
 ## **KANBAN board at the start of the sprint**
