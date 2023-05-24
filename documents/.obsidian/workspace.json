@@ -59,7 +59,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sprints and tests/tests & trials/Testing and trialling 1.md",
+                "file": "Sprints and tests/sprints/sprint 1.md",
                 "mode": "source",
                 "source": false
               }
@@ -140,7 +140,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Sprints and tests/tests & trials/Testing and trialling 1.md",
+                "file": "Sprints and tests/sprints/sprint 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -157,7 +157,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Sprints and tests/tests & trials/Testing and trialling 1.md",
+                "file": "Sprints and tests/sprints/sprint 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -180,7 +180,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Sprints and tests/tests & trials/Testing and trialling 1.md"
+                "file": "Sprints and tests/sprints/sprint 1.md"
               }
             }
           },
@@ -222,11 +222,12 @@
   },
   "active": "a7fbf42a72781bfa",
   "lastOpenFiles": [
+    "Sprints and tests/sprints/sprint 2.md",
+    "Sprints and tests/tests & trials/Testing and trialling 1.md",
+    "Pasted image 20230515144148.png",
     "Pasted image 20230510105153.png",
     "Pasted image 20230510103519.png",
     "Sprints and tests/tests & trials/Testing and trialing 2.md",
-    "Sprints and tests/tests & trials/Testing and trialling 1.md",
-    "Sprints and tests/sprints/sprint 2.md",
     "Sprints and tests/testing.md",
     "Sprints and tests/Trialing Example.md",
     "Pasted image 20230508145722.png",
@@ -239,9 +240,7 @@
     "Pasted image 20230508141441.png",
     "Kanban.md",
     "Sprints and tests/sprints/sprint 1.md",
-    "Pasted image 20230508141124.png",
     "sprint-docs/Sprint Document template.md",
-    "Pasted image 20230426102123.png",
     "Final Hand in statement .md",
     "sprint-docs/Untitled.md",
     "Sprints and tests/sprints",

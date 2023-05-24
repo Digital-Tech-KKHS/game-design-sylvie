@@ -1,7 +1,6 @@
 from logging import root
 import arcade
 from pathlib import Path
-from tkinter import Scale	
 from arcade.pymunk_physics_engine import PymunkPhysicsEngine
 
 
@@ -12,13 +11,13 @@ SCREEN_HEIGHT = 845
 SCREEN_TITLE = 'Year 13 game'
 MOVEMENT_SPEED = 3
 
-# Keep player from going too fast
+# Keep player from going too fast.
 PLAYER_MAX_HORIZONTAL_SPEED = 300
 PLAYER_MAX_VERTICAL_SPEED = 300
 DAMPING = 0.1
 
 
-# Friction between objects
+# Friction between objects.
 PLAYER_FRICTION = 0.6
 WALL_FRICTION = 0.7 
 
@@ -28,35 +27,57 @@ PLAYER_MASS = 2.0
 # Force applied to player:
 PLAYER_MOVE_FORCE = 4000
 
-#scaling to change characters from original size
+# Scaling to change characters from original size.
 CHARACTER_SCALING = 0.8
 
 
-#creating game window
+# Creating game window.
 class Window(arcade.Window):
+    """Main game window."""
+
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
         self.game_view = MyGame()
         self.Start_View = StartView()
         self.show_view(self.Start_View)
 
-#starting screen
+# Starting screen.
 class StartView(arcade.View):
+    """Creates startscreen."""
+
     def on_show_view(self):
         arcade.set_background_color(arcade.color.BLACK)
         arcade.set_viewport(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT)
 
-    #writing on starting screen
+    # Writing on starting screen
     def on_draw(self):
         self.clear()
         arcade.draw_text("Click anywhere to start", SCREEN_WIDTH / 2, SCREEN_WIDTH / 2, arcade.color.WHITE, font_size=50, anchor_x="center")
 
-    #when clicking it sends to first level
+    # When clicking it sends to first level
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         Game_View = MyGame()
         self.window.show_view(Game_View)
 
-#player textures 
+# Ending screen
+class EndView(arcade.View):
+    def on_show_view(self):
+        super().__init__()
+        arcade.set_background_color(arcade.color.BLACK)
+        arcade.set_viewport(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT)
+
+    # Writing on ending screen
+    def on_draw(self):
+        self.clear()
+        arcade.draw_text("You've been arrested >:(", SCREEN_WIDTH / 2, SCREEN_WIDTH / 2, arcade.color.WHITE, font_size=50, anchor_x="center")
+        arcade.draw_text("Click anywhere to play again", self.window.width / 2, self.window.height / 2-75, arcade.color.WHITE, font_size=20, anchor_x="center")
+        
+    # Sending back to first level if clicking screen
+    def on_mouse_press(self, _x, _y, _button, _modifiers):
+        Game_View = MyGame()
+        self.window.show_view(Game_View)
+
+# Player textures.
 class Entity(arcade.Sprite):
     def __init__(self):
         super().__init__(Path(__file__).parent.joinpath(f'spritefrontfacing.png'))
@@ -78,6 +99,8 @@ class Player(Entity):
         self.idle_odo = 1
         self.current_chunk_texture = 0 
 
+
+
 class Enemy(arcade.Sprite):
     def __init__(self):
         super().__init__(Path(__file__).parent.joinpath(f'temp_enemy.png'))
@@ -89,19 +112,10 @@ class Enemy(arcade.Sprite):
         self.odo = 0
         self.scale = CHARACTER_SCALING
 
-class Enemy(Entity):
-    def __init__(self, name_folder, name_file):
-
-        # Setup parent class
-        super().__init__(name_folder, name_file)
-
-        self.idle_animating = False
-        self.idle_odo = 1
-        self.current_chunk_texture = 0 
 
        
 
-#gameview window
+# Gameview window.
 class MyGame(arcade.View):
     def __init__(self):
         super().__init__()
@@ -119,7 +133,7 @@ class MyGame(arcade.View):
         self.wall_list = None
         self.enemy_list = None
    
-        # Track the current state of what key is pressed
+        # Track the current state of what key is pressed.
         self.A_pressed = False
         self.D_pressed = False
         self.W_pressed = False
@@ -134,38 +148,52 @@ class MyGame(arcade.View):
 
     def setup(self):
         self.player = Player()
+        self.enemy = Enemy()
         self.wall_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
 
+        # Where sprites spawns.
+        self.enemy.center_x = 100
+        self.enemy.center_y = 150
 
-        #where character spawns
         self.player.center_x = 100 
         self.player.center_y = 100 
 
-        #size of character
+        # Size of sprites.
         self.player.scale = 0.8
+        self.enemy.scale = 1.5
 
 
-        #tilemap
+        # Tilemap.
         tilemap_path = Path(__file__).parent.joinpath(f'citymapdesign.tmx')
         self.tilemap = arcade.load_tilemap(tilemap_path)
 
-        # Pull the sprite layers out of the tile map
+        # Pull the sprite layers out of the tile map.
         self.wall_list = self.tilemap.sprite_lists["walls"]
 
-        self.scene = arcade.Scene.from_tilemap(self.tilemap) # is this right? does it cause problems?
+        self.scene = arcade.Scene.from_tilemap(self.tilemap) 
 
         self.HUD = arcade.Scene()
         self.scene.add_sprite('player', self.player)
+        self.scene.add_sprite('enemy', self.enemy)
  
      
 
 
-    #camera&physics
+    # Camera&physics.
         gravity = (0, 0)
         self.physics_engine = PymunkPhysicsEngine(gravity=gravity)
         self.camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.HUD_camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
+
+        self.physics_engine.add_sprite(self.enemy,
+                                friction=PLAYER_FRICTION,
+                                mass=PLAYER_MASS,
+                                moment=arcade.PymunkPhysicsEngine.MOMENT_INF,
+                                damping=DAMPING,
+                                collision_type="enemy",
+                                max_horizontal_velocity=PLAYER_MAX_HORIZONTAL_SPEED,
+                                max_vertical_velocity=PLAYER_MAX_VERTICAL_SPEED)
 
         self.physics_engine.add_sprite(self.player,
                                 friction=PLAYER_FRICTION,
@@ -188,7 +216,7 @@ class MyGame(arcade.View):
                                             collision_type="wall",
                                             body_type=arcade.PymunkPhysicsEngine.STATIC)
 
-        #scene/camera etc 
+        # Scene/camera etc.
     def on_draw(self):
         self.clear()
         self.camera.use()
@@ -199,10 +227,10 @@ class MyGame(arcade.View):
     
         
 
-    #cameras
+    # Cameras.
     def center_camera_on_player(self):
-        camera_x = self.player.center_x - SCREEN_WIDTH /2
-        camera_y = self.player.center_y - SCREEN_HEIGHT /2
+        camera_x = self.player.center_x - SCREEN_WIDTH / 2
+        camera_y = self.player.center_y - SCREEN_HEIGHT / 2
 
         if self.player.center_x < SCREEN_WIDTH /2:
             camera_x = 0
@@ -211,7 +239,7 @@ class MyGame(arcade.View):
         self.camera.move_to((camera_x, camera_y))
 
 
-    #controls
+    # Controls.
     def on_key_press(self, key: int, modifiers: int):
         if key == arcade.key.W:
             self.W_pressed = True
@@ -233,8 +261,13 @@ class MyGame(arcade.View):
             self.D_pressed = False
 
     def on_update(self, delta_time: float):
-        
-        # Calculate speed based on the keys pressed
+
+        colliding = arcade.check_for_collision_with_list(self.player, self.scene['enemy'])
+        if colliding:
+            end_view = EndView()
+            self.window.show_view(end_view)
+
+        # Calculate speed based on the keys pressed.
         self.player.change_x = 0
         self.player.change_y = 0
 

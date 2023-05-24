@@ -21,7 +21,7 @@ Involved in the trial
 
 
 A:
-![[Pasted image 20230510103519.png]]
+![[Pasted image 20230515144148.png]]
 
 B:
 ![[Pasted image 20230510105153.png]]
