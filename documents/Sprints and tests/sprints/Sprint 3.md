@@ -22,7 +22,7 @@ enemies
 win/lose function
 worked on tilesets for map
 animation for character
-
+pymunk physics engine removed
 
 during this sprint i ran into a few issue with my code while trying to get new features working. i got my pymunk physics engine functioning which will help me a lot with character movement in the future. using this physics engine i got walls working which are very important for my topdown map. learning how to do this took longer than expected so didnt have as much time for other features
 
