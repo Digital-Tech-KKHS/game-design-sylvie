@@ -6,19 +6,17 @@ kanban-plugin: basic
 
 ## Backlog❄❄
 
-- [ ] Interactables (ticket, water, conductor)
 
 
 ## To do
 
-- [ ] character animation
+- [ ] Interactables (ticket, water, conductor)
 
 
 ## Doing
 
-- [ ] MVP
-- [ ] basic map of city
-- [ ] win/ lose/ start screen
+- [ ] making city map in aseprite/tiled
+- [ ] character animation
 - [ ] create tilesets
 - [ ] police/enemy
 
@@ -32,9 +30,12 @@ kanban-plugin: basic
 ## Complete 🎈🎉✨
 
 - [ ] begin game code
+- [ ] basic map of city
 - [ ] walls
+- [ ] MVP
 - [ ] 2d vs topdown
 - [ ] start screen
+- [ ] win/ lose/ start screen
 - [ ] basic character design
 - [ ] physics engine
 

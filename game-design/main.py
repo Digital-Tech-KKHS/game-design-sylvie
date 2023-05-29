@@ -4,7 +4,7 @@ from pathlib import Path
 from arcade.pymunk_physics_engine import PymunkPhysicsEngine
 from constants	import *
 from sprites import Player, Enemy
-from entity import * #NOT WORKING?????? >:(
+from entity import Entity
 
 # Creating game window.
 class Window(arcade.Window):
@@ -104,26 +104,27 @@ class MyGame(arcade.View):
 
     def setup(self):
         self.player = Player()
-        self.enemy = Enemy()
+        enemy = Enemy()
         self.wall_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
 
         # Where sprites spawns.
-        self.enemy.center_x = 100
-        self.enemy.center_y = 150
+        enemy.center_x = 100
+        enemy.center_y = 150
 
         self.player.center_x = 100 
         self.player.center_y = 100 
 
         # Size of sprites.
         self.player.scale = 0.8
-        self.enemy.scale = 1.5
+        enemy.scale = 1.5
 
         # Set boundaries on the left/right the enemy can't cross
-        self.enemy.boundary_right = CHARACTER_SCALING * 8
-        self.enemy.boundary_left = CHARACTER_SCALING * 3
-        self.enemy.change_x = 2
-        self.enemy_list.append(Enemy) 
+        enemy.boundary_right = CHARACTER_SCALING * 8
+        enemy.boundary_left = CHARACTER_SCALING * 3
+        enemy.change_x = 2
+
+        self.enemy_list.append(enemy) 
 
 
 
@@ -138,7 +139,7 @@ class MyGame(arcade.View):
 
         self.HUD = arcade.Scene()
         self.scene.add_sprite('player', self.player)
-        self.scene.add_sprite('enemy', self.enemy)
+        self.scene.add_sprite('enemy', enemy)
       
 
 
@@ -148,7 +149,7 @@ class MyGame(arcade.View):
         self.camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.HUD_camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
 
-        self.physics_engine.add_sprite(self.enemy,
+        self.physics_engine.add_sprite(enemy,
             friction=PLAYER_FRICTION,
             mass=PLAYER_MASS,
             moment=arcade.PymunkPhysicsEngine.MOMENT_INF,

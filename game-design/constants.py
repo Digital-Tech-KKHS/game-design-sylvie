@@ -10,11 +10,11 @@ MOVEMENT_SPEED = 3
 # Keep player from going too fast.
 PLAYER_MAX_HORIZONTAL_SPEED = 300
 PLAYER_MAX_VERTICAL_SPEED = 300
-DAMPING = 0.1
+DAMPING = 0.5
 
 
 # Friction between objects.
-PLAYER_FRICTION = 0.6
+PLAYER_FRICTION = 1
 WALL_FRICTION = 0.7 
 
 # Mass (defaults to 1)

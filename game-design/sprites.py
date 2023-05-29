@@ -4,20 +4,20 @@ from entity import Entity
 
 class Player(Entity):
     def __init__(self):
-        path = Path(__file__).parent.joinpath(f'spritefrontfacing.png')
-        super().__init__()
-
+        path = Path(__file__).parent.joinpath('spritefrontfacing.png')
+        super().__init__(path)
         self.idle_animating = False
         self.idle_odo = 1
         self.current_chunk_texture = 0 
 
 
 
-class Enemy(arcade.Sprite):
+class Enemy(Entity):
     def __init__(self):
-        super().__init__(Path(__file__).parent.joinpath(f'temp_enemy.png'))
+        path = Path(__file__).parent.joinpath('temp_enemy.png')
+        super().__init__(path)
         self.walk_textures = []
-        self.idle_textures = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'temp_enemy.png'))
+        self.idle_textures = path
         self.face_direction = 0
         self.current_texture = 0
         self.cur_texture_index = 0

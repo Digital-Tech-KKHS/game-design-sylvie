@@ -151,7 +151,7 @@ class MyGame(arcade.View):
         self.player.scale = 0.8
 
         #tilemap
-        tilemap_path = Path(__file__).parent.joinpath(f'Tilemap{self.level}.tmx')
+        tilemap_path = Path(__file__).parent.joinpath(f'mvpmapfr{self.level}.tmx')
         self.tilemap = arcade.load_tilemap(tilemap_path)
         self.scene = arcade.Scene.from_tilemap(self.tilemap)
 
@@ -179,7 +179,7 @@ class MyGame(arcade.View):
         self.HUD_camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
         
 
-    #how many potions have beeen collected 
+    #how many s have beeen collected 
     def on_draw(self):
         self.clear()
         self.camera.use()
