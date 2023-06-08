@@ -23,7 +23,9 @@ no game
 
 
 ## **Major Changes and Achievements Described**
-major achievements I made in this sprint were getting my game running and having my game running with the starts of an mvp. i did a lot of testing learning how to get topdown to work and trying different tilesets to see which aesthetic me and others preferred.
+major achievements I made in this sprint were getting my game running and having my game running with the starts of an mvp. i did a lot of testing learning how to get topdown to work and trying different tilesets to see which aesthetic me and others preferred. 
+
+i created a basic map and 
 
 ## **Brief Description of your testing**
 i did A/B testing on which  game design people like more: topdown or 2d. i did not create my own maps for it as i didnt want to waste my time on maps i might not use. instead i used pictures from different 2d and topdown games people enjoy and asked which per people prefered.These were the results.

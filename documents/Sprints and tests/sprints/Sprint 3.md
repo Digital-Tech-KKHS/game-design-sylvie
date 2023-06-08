@@ -22,25 +22,21 @@ enemies
 win/lose function
 worked on tilesets for map
 animation for character
-pymunk physics engine removed
+pymunk physics engine removed(movement)
 
-during this sprint i ran into a few issue with my code while trying to get new features working. i got my pymunk physics engine functioning which will help me a lot with character movement in the future. using this physics engine i got walls working which are very important for my topdown map. learning how to do this took longer than expected so didnt have as much time for other features
+in this sprint i worked on both my code and art. after getting others to test my game and using it more, i decided to chagne my physics engine back from the pymunk physics engine. i did this because i was not happy with the way my character was moving and decided i didnt need a physics engine this complex. i worked prety hard during this sprint but i think i couldve progressed more. i changed how i implemented my enemies as i previously had them as an object on the tilemap but decided that wasnt good enough so have put them in through vs code the same way i would my player. 
 
-i worked on my tileset and i finished my character design, implementing the character into my game. after completeing both of these i began working on code for enemies. they are an important part of my mvp because they determine wether you win or lose. i wasnt able to finish this as i got stuck with a few issues so will complete it in the next sprint.
+i worked on my tilesets for my game and finished my enemy character design. next sprint i will get my map looking better as i think thats where my game is lacking most at the moment.
 
-improved and changed my movement for the character so it will work in a top down format.
 
-(images of character)
+
 
 
 ## **Major Changes and Achievements Described**
 
 ## **Brief Description of your testing**
-i asked a few people to give opinons on my damping for the physics engine. i thought it looks like its drifting too much so i did an A/B test on 0.5 against 0.1 damping.
+I tested which movement people liked more for each physics engine. this was done through an A/B test and letting people have a go playing with each.
 
-opinions on colour schemes that would best portray themes of the game. 
-
-character speed, people test playing my game to see which is preferred.
 
 
 ## **Link to testing results/tables**
@@ -55,3 +51,6 @@ character speed, people test playing my game to see which is preferred.
 
 
 ## **Notes for next time, future improvements**
+- get enemy movement working
+- improve map
+- make interactable nps

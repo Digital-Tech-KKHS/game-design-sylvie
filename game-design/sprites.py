@@ -23,3 +23,15 @@ class Enemy(Entity):
         self.cur_texture_index = 0
         self.odo = 0
         self.scale = CHARACTER_SCALING
+
+    def seek(self, target:Player):
+        
+        if self.center_x > target.center_x:
+            self.change_x = -3
+        if self.center_x < target.center_x:
+            self.change_x = 3
+        if self.center_y > target.center_y:
+            self.change_y = -3
+        if self.center_y < target.center_y:
+            self.change_y = 3
+

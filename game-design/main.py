@@ -108,8 +108,8 @@ class MyGame(arcade.View):
         self.enemy_list = arcade.SpriteList()
 
         # Where sprites spawns.
-        enemy.center_x = 100
-        enemy.center_y = 150
+        enemy.center_x = 500
+        enemy.center_y = 500
 
         self.player.center_x = 100 
         self.player.center_y = 100 
@@ -118,14 +118,23 @@ class MyGame(arcade.View):
         self.player.scale = 0.8
         enemy.scale = 1.5
 
-        # Set boundaries on the left/right the enemy can't cross
-        enemy.boundary_right = CHARACTER_SCALING * 8
-        enemy.boundary_left = CHARACTER_SCALING * 3
-        enemy.change_x = 2
+        for enemy in self.enemy_list:
+            if 6 < self.player.center_x - enemy.center_x < 500:
+                enemy.seek(self.player)
+            elif -6 > self.player.center_x - enemy.center_x > -500:
+                enemy.seek(self.player)
+            else:
+                enemy.change_x = 0
+                
+            if 6 < self.player.center_y - enemy.center_y < 500:
+                enemy.seek(self.player)
+            elif -6 > self.player.center_y - enemy.center_y > -500:
+                enemy.seek(self.player)
+            else:
+                enemy.change_y = 0
 
-        self.enemy_list.append(enemy) 
-
-
+        for enemy in self.enemy_list:
+            enemy.update_animation()
 
         # Tilemap.
         tilemap_path = Path(__file__).parent.joinpath(f'citymapdesign.tmx')
@@ -218,6 +227,7 @@ class MyGame(arcade.View):
         # self.scene.update()
         self.physics_engine.update()
         self.center_camera_on_player()
+
 
 game = Window()
 arcade.run()

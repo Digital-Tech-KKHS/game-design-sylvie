@@ -40,7 +40,7 @@ character speed, people test playing my game to see which is preferred.
 
 
 ## **Link to testing results/tables**
-
+obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trials%2FTesting%20and%20trialing%202 
 
 # Project at the end of the sprint
 ## **KANBAN board at the end of the sprint**
