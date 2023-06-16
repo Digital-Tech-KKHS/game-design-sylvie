@@ -103,38 +103,36 @@ class MyGame(arcade.View):
 
     def setup(self):
         self.player = Player()
-        enemy = Enemy()
         self.wall_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
-
-        # Where sprites spawns.
-        enemy.center_x = 500
-        enemy.center_y = 500
 
         self.player.center_x = 100 
         self.player.center_y = 100 
 
         # Size of sprites.
         self.player.scale = 0.8
-        enemy.scale = 1.5
 
-        for enemy in self.enemy_list:
-            if 6 < self.player.center_x - enemy.center_x < 500:
-                enemy.seek(self.player)
-            elif -6 > self.player.center_x - enemy.center_x > -500:
-                enemy.seek(self.player)
-            else:
-                enemy.change_x = 0
+
+
+
+        # Seek function for enemy.
+#        for enemy in self.enemy_list:
+#            if 6 < self.player.center_x - enemy.center_x < 500:
+#                enemy.seek(self.player)
+#            elif -6 > self.player.center_x - enemy.center_x > -500:
+#                enemy.seek(self.player)
+#            else:
+#                enemy.change_x = 0
                 
-            if 6 < self.player.center_y - enemy.center_y < 500:
-                enemy.seek(self.player)
-            elif -6 > self.player.center_y - enemy.center_y > -500:
-                enemy.seek(self.player)
-            else:
-                enemy.change_y = 0
+#            if 6 < self.player.center_y - enemy.center_y < 500:
+#                enemy.seek(self.player)
+#            elif -6 > self.player.center_y - enemy.center_y > -500:
+#                enemy.seek(self.player)
+#            else:
+#                enemy.change_y = 0
 
-        for enemy in self.enemy_list:
-            enemy.update_animation()
+#        for enemy in self.enemy_list:
+#            enemy.update_animation()
 
         # Tilemap.
         tilemap_path = Path(__file__).parent.joinpath(f'citymapdesign.tmx')
@@ -143,12 +141,27 @@ class MyGame(arcade.View):
         # Pull the sprite layers out of the tile map.
         self.wall_list = self.tilemap.sprite_lists["walls"]
 
-        self.scene = arcade.Scene.from_tilemap(self.tilemap) 
+        self.scene = arcade.Scene.from_tilemap(self.tilemap)
+        self.scene.add_sprite_list('enemies')
 
         self.HUD = arcade.Scene()
         self.scene.add_sprite('player', self.player)
-        self.scene.add_sprite('enemy', enemy)
       
+        for enemy in self.scene["enemy_layer"]:
+            new_enemy = Enemy(enemy.properties)
+            new_enemy.center_x = enemy.center_x
+            new_enemy.center_y = enemy.center_y
+            self.scene["enemies"].append(new_enemy)
+            enemy.kill()
+        
+        for enemy in self.scene["enemy_layer"]:
+            new_enemy = Enemy(enemy.properties)
+            new_enemy.center_x = enemy.center_x
+            new_enemy.center_y = enemy.center_y
+            self.scene["enemies"].append(new_enemy)
+            enemy.kill()
+            
+           
 
 
     # Camera&physics.
@@ -202,7 +215,7 @@ class MyGame(arcade.View):
 
     def on_update(self, delta_time: float):
 
-        colliding = arcade.check_for_collision_with_list(self.player, self.scene['enemy'])
+        colliding = arcade.check_for_collision_with_list(self.player, self.scene['enemies'])
         if colliding:
             end_view = EndView()
             self.window.show_view(end_view)

@@ -13,19 +13,22 @@ class Player(Entity):
 
 
 class Enemy(Entity):
-    def __init__(self):
+    def __init__(self, properties=None):
         path = Path(__file__).parent.joinpath('temp_enemy.png')
         super().__init__(path)
-        self.walk_textures = []
-        self.idle_textures = path
-        self.face_direction = 0
-        self.current_texture = 0
-        self.cur_texture_index = 0
-        self.odo = 0
-        self.scale = CHARACTER_SCALING
+        print(properties)
+        if properties  is  not None:
+            for key, value in properties.items():
+                setattr(self, key, value)
+
+        try:
+            self.speed
+        except:
+            raise KeyError("enemy without seped custom property found. Chekck tilemap")
+        self.target = (0, 0)
 
     def seek(self, target:Player):
-        
+
         if self.center_x > target.center_x:
             self.change_x = -3
         if self.center_x < target.center_x:
@@ -34,4 +37,7 @@ class Enemy(Entity):
             self.change_y = -3
         if self.center_y < target.center_y:
             self.change_y = 3
+
+        
+        
 
