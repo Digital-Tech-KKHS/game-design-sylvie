@@ -9,7 +9,7 @@ MOVEMENT_SPEED = 3
 
 
 # Scaling to change characters from original size.
-CHARACTER_SCALING = 0.8
+CHARACTER_SCALING = 1.5
 
 # Speed of player.
 PLAYER_SPEED = 3

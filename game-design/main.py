@@ -74,7 +74,7 @@ class EndView(arcade.View):
 class MyGame(arcade.View):
     def __init__(self):
         super().__init__()
-        arcade.set_background_color(arcade.color.SKY_BLUE)
+        arcade.set_background_color(arcade.color.BLACK)
         self.player = None
         self.tilemap = None
         self.scene = None
@@ -87,6 +87,7 @@ class MyGame(arcade.View):
         self.reset_score = True
         self.wall_list = None
         self.enemy_list = None
+        
    
         # Track the current state of what key is pressed.
         self.A_pressed = False
@@ -112,27 +113,27 @@ class MyGame(arcade.View):
         # Size of sprites.
         self.player.scale = 0.8
 
-
+        
 
 
         # Seek function for enemy.
-#        for enemy in self.enemy_list:
-#            if 6 < self.player.center_x - enemy.center_x < 500:
-#                enemy.seek(self.player)
-#            elif -6 > self.player.center_x - enemy.center_x > -500:
-#                enemy.seek(self.player)
-#            else:
-#                enemy.change_x = 0
+        for enemy in self.enemy_list:
+            if 6 < self.player.center_x - enemy.center_x < 500:
+                enemy.seek(self.player)
+            elif -6 > self.player.center_x - enemy.center_x > -500:
+                enemy.seek(self.player)
+            else:
+                enemy.change_x = 0
                 
-#            if 6 < self.player.center_y - enemy.center_y < 500:
-#                enemy.seek(self.player)
-#            elif -6 > self.player.center_y - enemy.center_y > -500:
-#                enemy.seek(self.player)
-#            else:
-#                enemy.change_y = 0
+            if 6 < self.player.center_y - enemy.center_y < 500:
+                enemy.seek(self.player)
+            elif -6 > self.player.center_y - enemy.center_y > -500:
+                enemy.seek(self.player)
+            else:
+                enemy.change_y = 0
 
-#        for enemy in self.enemy_list:
-#            enemy.update_animation()
+        for enemy in self.enemy_list:
+            enemy.update_animation()
 
         # Tilemap.
         tilemap_path = Path(__file__).parent.joinpath(f'citymapdesign.tmx')
@@ -145,8 +146,16 @@ class MyGame(arcade.View):
         self.scene.add_sprite_list('enemies')
 
         self.HUD = arcade.Scene()
+        self.HUD.add_sprite_list('money')
         self.scene.add_sprite('player', self.player)
-      
+        
+      # Adding money icon.
+        self.scene.add_sprite_list('money')
+        for i in range(1):
+            x = 45 + 40 * i
+            y = SCREEN_HEIGHT - 25
+            money = arcade.Sprite(ROOT_FOLDER.joinpath('money.png'), 2.5, center_x=x, center_y=y)
+            self.HUD['money'].append(money)
         for enemy in self.scene["enemy_layer"]:
             new_enemy = Enemy(enemy.properties)
             new_enemy.center_x = enemy.center_x
