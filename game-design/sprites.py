@@ -14,7 +14,7 @@ class Player(Entity):
 
 class Enemy(Entity):
     def __init__(self, properties=None):
-        path = Path(__file__).parent.joinpath('temp_enemy.png')
+        path = Path(__file__).parent.joinpath('sylvieenemy.png')
         super().__init__(path)
         print(properties)
         if properties  is  not None:

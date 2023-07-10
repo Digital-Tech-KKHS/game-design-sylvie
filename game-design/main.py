@@ -112,10 +112,9 @@ class MyGame(arcade.View):
 
         # Size of sprites.
         self.player.scale = 0.8
-
         
 
-
+        
         # Seek function for enemy.
         for enemy in self.enemy_list:
             if 6 < self.player.center_x - enemy.center_x < 500:

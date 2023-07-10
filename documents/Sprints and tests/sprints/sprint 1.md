@@ -19,7 +19,7 @@
 no game
 # Sprint Summary
 ## **Sprint Reflection and summary**
-
+During this sprint I started my game. 
 
 
 ## **Major Changes and Achievements Described**
