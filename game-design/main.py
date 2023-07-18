@@ -4,6 +4,7 @@ from pathlib import Path
 from constants	import *
 from sprites import Player, Enemy
 from entity import Entity
+import math 
 
 # Creating game window.
 class Window(arcade.Window):
@@ -116,23 +117,23 @@ class MyGame(arcade.View):
 
         
         # Seek function for enemy.
-        for enemy in self.enemy_list:
-            if 6 < self.player.center_x - enemy.center_x < 500:
-                enemy.seek(self.player)
-            elif -6 > self.player.center_x - enemy.center_x > -500:
-                enemy.seek(self.player)
-            else:
-                enemy.change_x = 0
+        # for enemy in self.enemy_list:
+        #     if 6 < self.player.center_x - enemy.center_x < 500:
+        #         enemy.seek(self.player)
+        #     elif -6 > self.player.center_x - enemy.center_x > -500:
+        #         enemy.seek(self.player)
+        #     else:
+        #         enemy.change_x = 0
                 
-            if 6 < self.player.center_y - enemy.center_y < 500:
-                enemy.seek(self.player)
-            elif -6 > self.player.center_y - enemy.center_y > -500:
-                enemy.seek(self.player)
-            else:
-                enemy.change_y = 0
+        #     if 6 < self.player.center_y - enemy.center_y < 500:
+        #         enemy.seek(self.player)
+        #     elif -6 > self.player.center_y - enemy.center_y > -500:
+        #         enemy.seek(self.player)
+        #     else:
+        #         enemy.change_y = 0
 
-        for enemy in self.enemy_list:
-            enemy.update_animation()
+        # for enemy in self.enemy_list:
+        #     enemy.update_animation()
 
         # Tilemap.
         tilemap_path = Path(__file__).parent.joinpath(f'citymapdesign.tmx')
@@ -223,6 +224,17 @@ class MyGame(arcade.View):
 
     def on_update(self, delta_time: float):
 
+        for enemy in self.scene['enemies']:
+            dx = self.player.center_x - enemy.center_x
+            dy = self.player.center_y - enemy.center_y
+            theta = math.atan2(dy, dx)
+            if math.dist(self.player.position, enemy.position) < 200:
+                enemy.change_x = math.cos(theta)*enemy.speed
+                enemy.change_y = math.sin(theta)*enemy.speed
+            else:
+                enemy.change_x = 0
+                enemy.change_y = 0
+
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['enemies'])
         if colliding:
             end_view = EndView()
@@ -245,7 +257,7 @@ class MyGame(arcade.View):
 
         self.player.update()
         self.player.update_animation()
-        # self.scene.update()
+        self.scene.update()
         self.physics_engine.update()
         self.center_camera_on_player()
 
