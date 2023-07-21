@@ -30,6 +30,11 @@ As well as this, I created a basic map and character stand in, successfully impl
 
 ## **Brief Description of your testing**
 I did A/B testing on which  game design people like more: top down or 2d. I created 2 different maps and asked people from inside and outside our class which they preferred the look of.
+
+I tested the controls of my game. I had them setup the same way as I did for my 2d game I realised this didnt work and changed them to suit topdown.
+
+I tested my game and found that my physics engine was making my character fall off the map as I had gravity on. As I don't have walls etc in my game at the moment, I removed it, fixing the issue.
+
 ## **Link to testing results/tables**
 obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trials%2FTesting%20and%20trialling%201 
 
@@ -42,11 +47,11 @@ obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trial
 ![[Pasted image 20230721183743.png]]
 
 ## Link to **Video of the game at the end of the sprint**
-
+https://youtu.be/CNsGVWCPe5A
 
 ## **Notes for next time, future improvements**
-
-trialling:
-
-topdown vs 2d
+- walls
+- tileset correct size
+- map looking better
+- continue on mvp
 
