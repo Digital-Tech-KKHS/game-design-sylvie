@@ -19,18 +19,19 @@
 no game
 # Sprint Summary
 ## **Sprint Reflection and summary**
-During this sprint I started my game. 
+During this sprint I started my game. I put in all the basic code to create a window, character and the beginnings of a map. I did a lot of messing round with my map in this sprint, in my previous game I made it 2d so it took a bit of getting used to having it from a top down POV. I did not have my tile size right on the map so at the end of this sprint my game looked very disjointed as I hadn't quite finished the final parts of the map. 
 
+I am very happy with the progress that I made during this sprint. last year doing this sort of work was really hard and I was really happy to find that I was able to understand and do it much faster this year.
 
 ## **Major Changes and Achievements Described**
-major achievements I made in this sprint were getting my game running and having my game running with the starts of an mvp. i did a lot of testing learning how to get topdown to work and trying different tilesets to see which aesthetic me and others preferred. 
+major achievements I made in this sprint were getting my game running with the starts of an MVP. I did a lot of testing learning about how top down worked compared to 2d. I found the controls to be quite different but I was able to get it working and am currently in the process of improving them to a movement I like more. the A/B testing I did also gave me a direction to work towards in my game.
 
-i created a basic map and 
+As well as this, I created a basic map and character stand in, successfully implementing them both into my game. 
 
 ## **Brief Description of your testing**
-i did A/B testing on which  game design people like more: topdown or 2d. i did not create my own maps for it as i didnt want to waste my time on maps i might not use. instead i used pictures from different 2d and topdown games people enjoy and asked which per people prefered.These were the results.
+I did A/B testing on which  game design people like more: top down or 2d. I created 2 different maps and asked people from inside and outside our class which they preferred the look of.
 ## **Link to testing results/tables**
-
+obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trials%2FTesting%20and%20trialling%201 
 
 
 # Project at the end of the sprint
@@ -38,6 +39,7 @@ i did A/B testing on which  game design people like more: topdown or 2d. i did n
 ![[Pasted image 20230426102625.png]]
 
 ## **Screenshot of the game at the end of the sprint**
+![[Pasted image 20230721183743.png]]
 
 ## Link to **Video of the game at the end of the sprint**
 

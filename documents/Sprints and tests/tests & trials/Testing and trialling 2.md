@@ -15,7 +15,7 @@ Involved in the trial
 
 
 ## Describe the trail
->Before i started creating my tileset, i found a few different colour schemes and art styles that i liked and felt portrayed what the setting is like. to see which people would prefer, I did an A/B test and asked people in my class which they would like playing the most.
+>Before i started creating my tileset, i found a few different colour schemes and art styles that i liked and felt portrayed what the setting is like. to see which people would prefer, I did an A/B test and asked people in my class which they would like playing the most. CAHNGE TO DAMPING PHYSICS ENGINE
 
 
 
