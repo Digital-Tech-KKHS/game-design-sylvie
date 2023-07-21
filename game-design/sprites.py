@@ -10,6 +10,11 @@ class Player(Entity):
         self.idle_odo = 1
         self.current_chunk_texture = 0 
 
+class Npc(Entity):
+    def __init__(self, properties=None):
+        path = Path(__file__).parent.joinpath('tempnpc.png')
+        super().__init__(path)
+
 
 
 class Enemy(Entity):
