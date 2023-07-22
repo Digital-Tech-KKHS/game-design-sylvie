@@ -39,7 +39,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sprints and tests/sprints/sprint 2.md",
+                "file": "Sprints and tests/tests & trials/Testing and trialling 2.md",
                 "mode": "source",
                 "source": false
               }
@@ -128,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Sprints and tests/sprints/sprint 2.md",
+                "file": "Sprints and tests/tests & trials/Testing and trialling 2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Sprints and tests/sprints/sprint 2.md",
+                "file": "Sprints and tests/tests & trials/Testing and trialling 2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Sprints and tests/sprints/sprint 2.md"
+                "file": "Sprints and tests/tests & trials/Testing and trialling 2.md"
               }
             }
           },
@@ -210,28 +210,29 @@
   },
   "active": "a7fbf42a72781bfa",
   "lastOpenFiles": [
-    "Sprints and tests/sprints/sprint 1.md",
     "Sprints and tests/sprints/sprint 2.md",
-    "Sprints and tests/tests & trials/Testing and trialling 1.md",
     "Sprints and tests/tests & trials/Testing and trialling 2.md",
+    "Sprints and tests/sprints/sprint 1.md",
+    "Screenshot 2023-07-22 145337 1.png",
+    "Screenshot 2023-07-22 145337.png",
+    "Sprints and tests/tests & trials/Testing and trialling 4.md",
+    "Sprints and tests/tests & trials/Testing and trialling 3.md",
+    "Sprints and tests/sprints/Sprint 4.md",
+    "Sprints and tests/sprints/Sprint 3.md",
+    "Pasted image 20230721183743.png",
+    "Pasted image 20230721183318.png",
+    "Pasted image 20230710202930.png",
+    "Pasted image 20230628102639.png",
+    "Pasted image 20230628102302.png",
     "Pasted image 20230626141132.png",
     "Pasted image 20230529142049.png",
     "Pasted image 20230529141742.png",
-    "Pasted image 20230515144148.png",
-    "Pasted image 20230510105153.png",
-    "Pasted image 20230510103519.png",
-    "Pasted image 20230508145722.png",
-    "Pasted image 20230508145718.png",
-    "Pasted image 20230508145648.png",
-    "Pasted image 20230508145601.png",
+    "Sprints and tests/tests & trials/Testing and trialing 2.md",
+    "Sprints and tests/tests & trials/Testing and trialling 1.md",
     "testing-and-trialing/Trialing Example.md",
     "testing-and-trialing/testing.md",
     "testing-and-trialing",
     "Sprints and tests/testing.md",
-    "Sprints and tests/sprints/Sprint 3.md",
-    "Sprints and tests/tests & trials/Testing and trialling 3.md",
-    "Sprints and tests/tests & trials/Testing and trialling 4.md",
-    "Sprints and tests/sprints/Sprint 4.md",
     "Sprints and tests/sprints/Sprint 2.md",
     "Kanban.md",
     "Sprints and tests/sprints/Sprint 1.md",
@@ -246,7 +247,6 @@
     "Game Design Document.md",
     "readme.md.md",
     "task/year-12/Marking Schedule.md",
-    "task/year-12/Teacher Info.md",
-    "task/year-12/Year 12 Arcade Game Design Task.md"
+    "task/year-12/Teacher Info.md"
   ]
 }

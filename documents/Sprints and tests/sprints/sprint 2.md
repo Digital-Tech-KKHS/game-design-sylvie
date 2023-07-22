@@ -16,17 +16,13 @@
 ## **KANBAN board at the start of the sprint**
 ![[Pasted image 20230508141124.png]]
 ## **Screenshot of the game at the start of the sprint**
-
+![[Pasted image 20230721183743.png]]
 # Sprint Summary
 ## **Sprint Reflection and summary**
 
 during this sprint i ran into a few issue with my code while trying to get new features working. i got my pymunk physics engine functioning which will help me a lot with character movement in the future. using this physics engine i got walls working which are very important for my topdown map. learning how to do this took longer than expected so didnt have as much time for other features
 
 i worked on my tileset and i finished my character design, implementing the character into my game. after completeing both of these i began working on code for enemies. they are an important part of my mvp because they determine wether you win or lose. i wasnt able to finish this as i got stuck with a few issues so will complete it in the next sprint.
-
-improved and changed my movement for the character so it will work in a top down format.
-
-(images of character)
 
 
 ## **Major Changes and Achievements Described**
@@ -46,8 +42,8 @@ obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trial
 ## **KANBAN board at the end of the sprint**
 ![[Pasted image 20230508141441.png]]
 ## **Screenshot of the game at the end of the sprint**
-
+![[Screenshot 2023-07-22 145337 1.png]]
 ## Link to **Video of the game at the end of the sprint**
-
+https://youtu.be/NrO8iwRoRB8
 
 ## **Notes for next time, future improvements**
