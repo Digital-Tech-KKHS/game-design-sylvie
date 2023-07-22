@@ -20,19 +20,23 @@
 # Sprint Summary
 ## **Sprint Reflection and summary**
 
-during this sprint i ran into a few issue with my code while trying to get new features working. i got my pymunk physics engine functioning which will help me a lot with character movement in the future. using this physics engine i got walls working which are very important for my topdown map. learning how to do this took longer than expected so didnt have as much time for other features
+During this sprint I ran into a few issue with my code while trying to get new features working. I got my pymunk physics engine functioning which will help me a lot with character movement in the future. Using this physics engine I got walls working which are very important for my top down map. Learning how to do this took longer than expected so I ended up not having as much time for other features I was hoping to work on. 
 
-i worked on my tileset and i finished my character design, implementing the character into my game. after completeing both of these i began working on code for enemies. they are an important part of my mvp because they determine wether you win or lose. i wasnt able to finish this as i got stuck with a few issues so will complete it in the next sprint.
+I fixed the tile size of my map so it looked a lot better in this sprint. I worked on my tile set and I finished my character design, implementing the character into my game. After completing both of these I began working on code for enemies. They are an important part of my game because they determine whether you win or lose. I wasn't able to finish this as I got stuck with a few issues so I'm hoping I will complete it in the next sprint.
 
 
 ## **Major Changes and Achievements Described**
-
+- Start screen 
+- Map tiles
+- Walls/physics engine
+- Getting character into game
+- Starting on enemies
 ## **Brief Description of your testing**
-i asked a few people to give opinons on my damping for the physics engine. i thought it looks like its drifting too much so i did an A/B test on 0.5 against 0.1 damping.
+I asked a few people to give opinions on my damping for the physics engine. I thought it looks like its drifting too much so I changed this after feedback that agreed with me.
 
-opinions on colour schemes that would best portray themes of the game. 
+I did A/B testing to get opinions on colour schemes that would best suit my game.
 
-character speed, people test playing my game to see which is preferred.
+During the week I ran some tests on movement and controls and found a few issues so the testing included how I fixed one of them.
 
 
 ## **Link to testing results/tables**
@@ -47,3 +51,5 @@ obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trial
 https://youtu.be/NrO8iwRoRB8
 
 ## **Notes for next time, future improvements**
+- Work on enemies
+- Work on character movement
