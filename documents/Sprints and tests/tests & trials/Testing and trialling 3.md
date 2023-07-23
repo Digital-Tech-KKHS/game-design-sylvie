@@ -1,85 +1,83 @@
 _Date:_ 6th May
 
 Involved in the trial
->- Grace McDonld
+>- Grace McDonald
 >- Gabby Smythe
->- jasper sharp
->- charley kate
->- simone wu
->- josiah Beale
+>- Charley Kate
+>- Simone Wu
+>- Josiah Beale
+>- Jasper Sharp
 
 ## Trial goal:
-> To find out whether users prefer the enemy to stay still or have a seek function. The enemies function effects the difficulty of the game.
+> To find out which character movement people prefer using two different physics engines.
+>
 
 ## Describe the trail
->I set up a trial for each option, the first one had an enemy with a seek function and the second had an enemy with no seek function. I then gave it to end users and they played on each and told me which they preferred. Whichever people liked more would be the one implemented into the game.
-
+>I set up a trial for each option, the first was the movement with pymunk physics engine and the next was with arcades simple physics engine. I had test users within my class play on each and tell me which they preferred.
 
 
 A:
-![[Pasted image 20230508145601.png]]
+https://youtu.be/NrO8iwRoRB8
 
 B:
 ![[Pasted image 20230508145221.png]]
 
 
 ## Results
-> - Everyone preferred the enemies with the seek function. 
-> - Feedback was it added a level of complexity to the game and it would be too easy if the enemies stayed still.
+> - Everyone preferred the movement using the simple physics engine
+> - The feedback I got was that the pymunk one didn't stop immediately and had ice skater like motion.
 >
 ## Briefly describe the changes you have made based on this trial
-> - These results have given me info on what people prefer with the enemies.
-> - Everyone liked the enemies with a seek function though said having it within a certain distance would be good to have it within a certain distance so you weren't worried about the enemies the entire time while trying to do other things within the game.
+> - I changed my physics engine from pymunk physics engine to python arcade simple physics engine.
 
-## Test 2:
+## Test 1:
 # Getting user input
 
 Date: 6/5/2023
 
 ```python
-    def on_key_release(self, key: int, modifiers: int):
+   def seek(self, target:Player):
 
-        if key == arcade.key.W:
+  
 
-            self.W_pressed = False
+        if self.center_x > target.center_x:
 
-        elif key == arcade.key.A:
+            self.change_x = -3
 
-            self.A_pressed = False
+        if self.center_x < target.center_x:
 
-        elif key == arcade.key.S:
+            self.change_x = 3
 
-            self.S_pressed = False
+        if self.center_y > target.center_y:
 
-        elif key == arcade.key.D:
+            self.change_y = -3
 
-            self.D_pressed = False
+        if self.center_y < target.center_y:
+
+            self.change_y = 3
 ```
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-| Player stops on key release    | on key release, player stops                         | player not stopping                       |
+| Seek function    | Enemy seeks player target                        | Enemy did not seek Player                     |
 
-This was a bit of a problem for me as im new to the physics engine im using. I realised that it was because i did not have damping on for my player/physics engine and set it to 0.1..
+## Test 2:
+
 
 ```python
-        self.physics_engine.add_sprite(self.player,
+        for enemy in self.scene["enemy_layer"]:
 
-                                friction=PLAYER_FRICTION,
+            new_enemy = Enemy(enemy.properties)
 
-                                mass=PLAYER_MASS,
+            new_enemy.center_x = enemy.center_x
 
-                                moment=arcade.PymunkPhysicsEngine.MOMENT_INF,
+            new_enemy.center_y = enemy.center_y
 
-                                damping=DAMPING,
+            self.scene["enemies"].append(new_enemy)
 
-                                collision_type="player",
-
-                                max_horizontal_velocity=PLAYER_MAX_HORIZONTAL_SPEED,
-
-                                max_vertical_velocity=PLAYER_MAX_VERTICAL_SPEED)
+            enemy.kill()
 ```
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-| Player stops on key release  | on key release, player stops    | on key release player stops    |
+| Enemy functions  | Enemy object in map replaced by PNG    | Expected    |

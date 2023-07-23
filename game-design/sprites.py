@@ -19,7 +19,7 @@ class Npc(Entity):
 
 class Enemy(Entity):
     def __init__(self, properties=None):
-        path = Path(__file__).parent.joinpath('sylvieenemy.png')
+        path = Path(__file__).parent.joinpath('enemy2.png')
         super().__init__(path)
         print(properties)
         if properties is not None:
@@ -31,7 +31,7 @@ class Enemy(Entity):
         try:
             self.speed
         except:
-            raise KeyError("enemy without seped custom property found. Chekck tilemap")
+            raise KeyError("Enemy without speed custom property found. Check tilemap")
         
 
     # def seek(self, target:Player):
