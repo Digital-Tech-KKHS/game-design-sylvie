@@ -18,10 +18,10 @@
 # Sprint Summary
 ## **Sprint Reflection and summary**
 
-In this sprint I worked on both my code and art. After getting others to test my game and using it more, I decided to change my physics engine back from the pymunk physics engine. I did this because I was not happy with the way my character was moving and decided I didn't need a physics engine this complex. I worked pretty hard during this sprint but I think I could've progressed more. I got very caught up working on my enemies. I couldn't figure out how to get them to work how I wanted. I changed how I implemented my enemies as I previously had them as part of the tile map but decided that wasn't good enough so have put them in as an object layer in tiled map, my code will convert it to enemy png. With the enemies now in my game I have a way to lose.
+In this sprint I worked on both my code and art. After getting others to test my game and using it more, I decided to change my physics engine back from the pymunk physics engine. I did this because I was not happy with the way my character was moving and decided I didn't need a physics engine this complex. I worked pretty hard during this sprint but I think I could've progressed more. I got very caught up working on my enemies. I couldn't figure out how to get them to work how I wanted. I changed how I implemented my enemies as I previously had them as part of the tile map but decided that wasn't good enough so have put them in the same way as I did with my player character. With the enemies now in my game I have a way to lose.
 
 I worked on my tile sets for my game and finished my enemy character design. Next sprint I will get my map looking better as I think that's where my game is lacking most at the moment. I began to work on the animation for my character and enemy. 
-![[Pasted image 20230723150724.png | 100]]
+
 
 
 ## **Major Changes and Achievements Described**

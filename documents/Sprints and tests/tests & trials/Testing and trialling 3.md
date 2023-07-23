@@ -36,48 +36,35 @@ https://youtu.be/bokRNTz14HM
 Date: 6/5/2023
 
 ```python
-   def seek(self, target:Player):
+   colliding = arcade.check_for_collision_with_list(self.player, self.scene['enemies'])
 
-  
+        if colliding:
 
-        if self.center_x > target.center_x:
+            end_view = EndView()
 
-            self.change_x = -3
-
-        if self.center_x < target.center_x:
-
-            self.change_x = 3
-
-        if self.center_y > target.center_y:
-
-            self.change_y = -3
-
-        if self.center_y < target.center_y:
-
-            self.change_y = 3
+            self.window.show_view(end_view)
 ```
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-| Seek function    | Enemy seeks player target                        | Enemy did not seek Player                     |
+| Lose function    | On collision with enemy, end screen pops up                        | Expected                     |
 
 ## Test 2:
 
 
 ```python
-        for enemy in self.scene["enemy_layer"]:
-
-            new_enemy = Enemy(enemy.properties)
-
-            new_enemy.center_x = enemy.center_x
-
-            new_enemy.center_y = enemy.center_y
-
-            self.scene["enemies"].append(new_enemy)
-
-            enemy.kill()
+        for enemy in self.scene'[enemy_layer]':
+	        if 6 player.center_x enemy.center_x < 500: 
+		        enemy.seek(player) 
+		        enemy.attacking = True 
+		    elif -6 > player.center_x - enemy.center_x > -500: 
+			    enemy.seek(player) 
+			    enemy.attacking = True 
+			else: 
+				enemy.change_x = 0 
+				enemy.attacking = False
 ```
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-| Enemy functions  | Enemy object in map replaced by PNG    | Expected    |
+| Seek function  | Enemy seeks player     | Enemy did not seek player    |

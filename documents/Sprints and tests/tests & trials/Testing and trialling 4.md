@@ -1,89 +1,85 @@
 _Date:_ 6th May
 
 Involved in the trial
->- Grace McDonld
+>- Grace McDonald
 >- Gabby Smythe
->- jasper sharp
->- charley kate
->- simone wu
->- josiah Beale
+>- Charley Kate
+>- Simone Wu
+>- Josiah Beale
+>- Jasper sharp
 
 ## Trial goal:
-> To find what colour scheme people would prefer to see in the game. Which is most aesthetically pleasing etc.
+> Find out which enemy design people preferred more.
 
 
 ## Describe the trail
->Before i started creating my tileset, i found a few different colour schemes and art styles that i liked and felt portrayed what the setting is like. to see which people would prefer, I did an A/B test and asked people in my class which they would like playing the most.
+>I asked people from inside and outside my class which character they preferred. I told them B was ai and A was original. the people doing this test knew what the rest of my game looked like so were able to make a judgement on which suited it more.
 
 
 
 A:
-![[Pasted image 20230508145601.png]]
+![[Pasted image 20230723150724.png | 100]]
 
 B:
-![[Pasted image 20230508145221.png]]
+![[Pasted image 20230723160503.png | 100]]
 
 
 ## Results
-> - Grace, Gabby, Charlie and simone prefered A
-> - Jasper and Josiah preferred B
-> - the people that prefered a liked that it was brighter and also enojoyed the colour palette
-> - the people that prefered B liekd that the darkness of it though thought it might not really fit with my game
+> - Charley, Josiah, Simone and Jasper both liked B more but as they have seen my game before, told me that it would look out of place and to use my own design.
+> - The rest preferred mine and knew it would fit the game more and said to use that as it would be more simple to animate.
 >
-## Breifly describe the changes you have made based on this trial
-> - These results have given me a place to start with my tileset 
-> - it has given me a firm idea of what people would prefer to see and what might fit best with the game.
-> - the feedback on B has changed my perspective on what would be best because now i agree that it may not be quite right for the game
+## Briefly describe the changes you have made based on this trial
+> - These results have told me which is the best option to go with. I do not want my characters to look out of place in my games world so I will take their advice.
+> - I chose to use my own design over AI design.
 
-## Test 2:
+## Test 1:
 # Getting user input
 
 Date: 6/5/2023
 
 ```python
-    def on_key_release(self, key: int, modifiers: int):
+   def seek(self, target:Player):
 
-        if key == arcade.key.W:
+  
 
-            self.W_pressed = False
+        if self.center_x > target.center_x:
 
-        elif key == arcade.key.A:
+            self.change_x = -3
 
-            self.A_pressed = False
+        if self.center_x < target.center_x:
 
-        elif key == arcade.key.S:
+            self.change_x = 3
 
-            self.S_pressed = False
+        if self.center_y > target.center_y:
 
-        elif key == arcade.key.D:
+            self.change_y = -3
 
-            self.D_pressed = False
+        if self.center_y < target.center_y:
+
+            self.change_y = 3
 ```
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-| Player stops on key release    | on key release, player stops                         | player not stopping                       |
+| Seek function    | Enemy seeks player target                        | Enemy did not seek Player                     |
 
-This was a bit of a problem for me as im new to the physics engine im using. I realised that it was because i did not have damping on for my player/physics engine and set it to 0.1..
+## Test 2:
+
 
 ```python
-        self.physics_engine.add_sprite(self.player,
+        for enemy in self.scene["enemy_layer"]:
 
-                                friction=PLAYER_FRICTION,
+            new_enemy = Enemy(enemy.properties)
 
-                                mass=PLAYER_MASS,
+            new_enemy.center_x = enemy.center_x
 
-                                moment=arcade.PymunkPhysicsEngine.MOMENT_INF,
+            new_enemy.center_y = enemy.center_y
 
-                                damping=DAMPING,
+            self.scene["enemies"].append(new_enemy)
 
-                                collision_type="player",
-
-                                max_horizontal_velocity=PLAYER_MAX_HORIZONTAL_SPEED,
-
-                                max_vertical_velocity=PLAYER_MAX_VERTICAL_SPEED)
+            enemy.kill()
 ```
 
 | Test Data                    | Expected                        | Observed                       |
 | ---------------------------- | ------------------------------- | ------------------------------ |
-| Player stops on key release  | on key release, player stops    | on key release player stops    |
+| Enemy functions  | Enemy object in map replaced by PNG    | Expected    |
