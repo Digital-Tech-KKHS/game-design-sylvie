@@ -44,12 +44,14 @@ obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trial
 ## **KANBAN board at the end of the sprint**
 ![[Pasted image 20230628102302.png]]
 ## **Screenshot of the game at the end of the sprint**
-![[Pasted image 20230626141132.png]]
+![[sprint4game.png]]
 
 ## Link to **Video of the game at the end of the sprint**
-
+https://youtu.be/3YLujzQVElg
 
 ## **Notes for next time, future improvements**
-- get enemy movement working
-- improve map
-- make interactable nps
+- npcs
+- complete map
+- complete game
+- character animations
+- win function
