@@ -20,7 +20,7 @@ A:
 https://youtu.be/NrO8iwRoRB8
 
 B:
-![[Pasted image 20230508145221.png]]
+https://youtu.be/bokRNTz14HM
 
 
 ## Results
