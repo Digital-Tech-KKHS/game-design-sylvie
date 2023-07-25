@@ -103,7 +103,6 @@ class MyGame(arcade.View):
 
         self.setup()
         self.walk_textures =[]
-        self.idle_textures = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'spritefrontfacing.png'))
         self.face_direction = 0
         self.current_texture = 0
         self.odo = 0
@@ -144,20 +143,20 @@ class MyGame(arcade.View):
         self.scene.add_sprite_list('money')
         for i in range(1):
             x = 45 + 40 * i
-            y = SCREEN_HEIGHT - 25
+            y = SCREEN_HEIGHT - 75
             money = arcade.Sprite(ROOT_FOLDER.joinpath('money.png'), 2.5, center_x=x, center_y=y)
             self.HUD['money'].append(money)
 
         # Adding handcuffs icon.
         self.scene.add_sprite_list('handcuffs')
         for i in range(3):
-            x = 45 + 40 * i
-            y = SCREEN_HEIGHT - 40
+            x = 40 + 45 * i
+            y = SCREEN_HEIGHT - 150
             handcuffs = arcade.Sprite(ROOT_FOLDER.joinpath('handcuffs.png'), 2.5, center_x=x, center_y=y)
             self.HUD['handcuffs'].append(handcuffs)
 
-        for enemy in self.scene["enemy_layer"]:
-            enemy.scale = 0.5
+        
+            
 
         # Adding enemy/png to scene.
         for enemy in self.scene["enemy_layer"]:
@@ -191,9 +190,10 @@ class MyGame(arcade.View):
 
     #NPC dialogue
         self.dialogue_messages = [
-            "So you want to get home on my train...? Usually I dont allow thieves on.",
-            "But maybe I could make use of you, in return I'll let you on my train.",
-            "Get me 5 bottles of water and leave it in this box next to me, then you'll move onto the next trial..."
+            "So you want to get home on my train...?",
+            "Usually I dont allow thieves on, but maybe I could make use of you",
+            "If you do a few things for me, I'll let you on my train.",
+            "Firstly, get me 5 bottles of water and leave it in this box next to me."
         ]
 
         self.dialogue_index = 0  
@@ -206,7 +206,7 @@ class MyGame(arcade.View):
         self.HUD_camera.use()
         self.HUD.draw()
 
-        arcade.draw_text(f"Collection: {self.score}", SCREEN_WIDTH-100, SCREEN_HEIGHT-50)
+        arcade.draw_text(f"Items collected: {self.score}", SCREEN_WIDTH-1425, SCREEN_HEIGHT-45)
 
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['npc'])
         if colliding:
@@ -227,7 +227,7 @@ class MyGame(arcade.View):
                 anchor_x="center", 
                 anchor_y="center"
             )
-
+        
 
     # Cameras.
     def center_camera_on_player(self):
@@ -270,7 +270,10 @@ class MyGame(arcade.View):
             if button == arcade.MOUSE_BUTTON_LEFT:
                 self.dialogue_index = index  
         
-        # if self.dialogue_index =
+        if self.dialogue_index == 3:
+            if button == arcade.MOUSE_BUTTON_LEFT:
+                self.dialogue_active = None
+                
             
 
     def on_update(self, delta_time: float):
@@ -287,6 +290,7 @@ class MyGame(arcade.View):
             dx = self.player.center_x - enemy.center_x
             dy = self.player.center_y - enemy.center_y
             theta = math.atan2(dy, dx)
+
             if math.dist(self.player.position, enemy.position) < 300:
                 enemy.change_x = math.cos(theta)*enemy.speed
                 enemy.change_y = math.sin(theta)*enemy.speed
