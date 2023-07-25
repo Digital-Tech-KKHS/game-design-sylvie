@@ -121,7 +121,7 @@ class MyGame(arcade.View):
         self.player.scale = 0.8
         
         # Tilemap.
-        tilemap_path = Path(__file__).parent.joinpath(f'map0.tmx')
+        tilemap_path = Path(__file__).parent.joinpath(f'map{self.level}.tmx')
         self.tilemap = arcade.load_tilemap(tilemap_path)
 
         # Pull the sprite layers out of the tile map.
@@ -133,7 +133,12 @@ class MyGame(arcade.View):
 
         self.HUD = arcade.Scene()
         self.HUD.add_sprite_list('money')
+        self.HUD.add_sprite_list('handcuffs')
         self.scene.add_sprite('player', self.player)
+
+        if self.reset_score:
+            self.score = 0
+        self.reset_score = False
         
         # Adding money icon.
         self.scene.add_sprite_list('money')
@@ -142,6 +147,14 @@ class MyGame(arcade.View):
             y = SCREEN_HEIGHT - 25
             money = arcade.Sprite(ROOT_FOLDER.joinpath('money.png'), 2.5, center_x=x, center_y=y)
             self.HUD['money'].append(money)
+
+        # Adding handcuffs icon.
+        self.scene.add_sprite_list('handcuffs')
+        for i in range(3):
+            x = 45 + 40 * i
+            y = SCREEN_HEIGHT - 40
+            handcuffs = arcade.Sprite(ROOT_FOLDER.joinpath('handcuffs.png'), 2.5, center_x=x, center_y=y)
+            self.HUD['handcuffs'].append(handcuffs)
 
         for enemy in self.scene["enemy_layer"]:
             enemy.scale = 0.5
@@ -192,6 +205,8 @@ class MyGame(arcade.View):
         self.scene.draw()
         self.HUD_camera.use()
         self.HUD.draw()
+
+        arcade.draw_text(f"Collection: {self.score}", SCREEN_WIDTH-100, SCREEN_HEIGHT-50)
 
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['npc'])
         if colliding:
@@ -260,6 +275,14 @@ class MyGame(arcade.View):
 
     def on_update(self, delta_time: float):
 
+        for water in self.scene['water']:
+            water.on_update()
+            
+            colliding = arcade.check_for_collision_with_list(self.player, self.scene['water'])
+            for water in colliding:
+                water.kill()
+                self.score += 1
+
         for enemy in self.scene['enemies']:
             dx = self.player.center_x - enemy.center_x
             dy = self.player.center_y - enemy.center_y
@@ -273,6 +296,14 @@ class MyGame(arcade.View):
 
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['enemies'])
         if colliding:
+            self.HUD['handcuffs'][-1].kill()
+            self.player.center_x = 100
+            self.player.center_y = 100
+        
+    
+
+        #if losing all health: send to ending screen
+        if len(self.HUD['handcuffs']) == 0:
             end_view = EndView()
             self.window.show_view(end_view)
 
