@@ -74,7 +74,6 @@ class EndView(arcade.View):
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         Game_View = MyGame()
         self.window.show_view(Game_View)
-    
 
 # Gameview window.
 class MyGame(arcade.View):
@@ -118,6 +117,8 @@ class MyGame(arcade.View):
 
         # Size of sprites.
         self.player.scale = 0.8
+
+        self.collection_sound = arcade.load_sound(":resources:sounds/coin3.wav")
         
         # Tilemap.
         tilemap_path = Path(__file__).parent.joinpath(f'map{self.level}.tmx')
@@ -137,7 +138,7 @@ class MyGame(arcade.View):
 
         if self.reset_score:
             self.score = 0
-        self.reset_score = False
+        self.reset_score = True
         
         # Adding money icon.
         self.scene.add_sprite_list('money')
@@ -155,9 +156,6 @@ class MyGame(arcade.View):
             handcuffs = arcade.Sprite(ROOT_FOLDER.joinpath('handcuffs.png'), 2.5, center_x=x, center_y=y)
             self.HUD['handcuffs'].append(handcuffs)
 
-        
-            
-
         # Adding enemy/png to scene.
         for enemy in self.scene["enemy_layer"]:
             new_enemy = Enemy(enemy.properties)
@@ -171,7 +169,7 @@ class MyGame(arcade.View):
             new_enemy.center_x = enemy.center_x
             new_enemy.center_y = enemy.center_y
             self.scene["enemies"].append(new_enemy)
-            enemy.kill()
+            enemy.kill() 
 
         # Adding npc to scene. 
         for npc in self.scene["npc_layer"]:
@@ -193,7 +191,8 @@ class MyGame(arcade.View):
             "So you want to get home on my train...?",
             "Usually I dont allow thieves on, but maybe I could make use of you",
             "If you do a few things for me, I'll let you on my train.",
-            "Firstly, get me 5 bottles of water and leave it in this box next to me."
+            "Firstly, get me 5 bottles of water and leave it in this box next to me.",
+            "And remember... the police drones will be after you because of what you've stolen.",
         ]
 
         self.dialogue_index = 0  
@@ -206,8 +205,12 @@ class MyGame(arcade.View):
         self.HUD_camera.use()
         self.HUD.draw()
 
-        arcade.draw_text(f"Items collected: {self.score}", SCREEN_WIDTH-1425, SCREEN_HEIGHT-45)
+        arcade.draw_text(f"Items collected: {self.score}", 
+                        SCREEN_WIDTH-1425, 
+                        SCREEN_HEIGHT-45
+        )
 
+        # Collision with NPC = pop up text.
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['npc'])
         if colliding:
             arcade.draw_rectangle_filled(
@@ -228,6 +231,24 @@ class MyGame(arcade.View):
                 anchor_y="center"
             )
         
+        if colliding and self.level == 1:
+            arcade.draw_rectangle_filled(
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT // 2, 
+                800, 
+                100, 
+                arcade.color.WHITE
+            )
+        
+            arcade.draw_text(
+                "Your second task is to sneak into the garden and get me 5 fruitd.", 
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT // 2 + 20, 
+                arcade.color.BLACK, 
+                font_size=16, 
+                anchor_x="center", 
+                anchor_y="center"
+            )
 
     # Cameras.
     def center_camera_on_player(self):
@@ -239,8 +260,6 @@ class MyGame(arcade.View):
         if self.player.center_y < SCREEN_HEIGHT /2:
             camera_y = 0
         self.camera.move_to((camera_x, camera_y))
-
-    
     
     # Controls.
     def on_key_press(self, key: int, modifiers: int):
@@ -263,21 +282,22 @@ class MyGame(arcade.View):
         elif key == arcade.key.D:
             self.D_pressed = False
 
+    # Dialogue on mouse press.
     def on_mouse_press(self, x: int, y: int, button: int, modifiers: int):
-        index = (self.dialogue_index + 1) 
+        index = (self.dialogue_index + 1) % len(self.dialogue_messages)
         
         if self.dialogue_active:
             if button == arcade.MOUSE_BUTTON_LEFT:
                 self.dialogue_index = index  
         
-        if self.dialogue_index == 3:
+        if self.dialogue_index == 4:
             if button == arcade.MOUSE_BUTTON_LEFT:
                 self.dialogue_active = None
-                
-            
+                    
 
     def on_update(self, delta_time: float):
 
+        # Water collection/score.a
         for water in self.scene['water']:
             water.on_update()
             
@@ -285,7 +305,9 @@ class MyGame(arcade.View):
             for water in colliding:
                 water.kill()
                 self.score += 1
+                arcade.play_sound(self.collection_sound)
 
+        # Enemy seek function.
         for enemy in self.scene['enemies']:
             dx = self.player.center_x - enemy.center_x
             dy = self.player.center_y - enemy.center_y
@@ -297,6 +319,7 @@ class MyGame(arcade.View):
             else:
                 enemy.change_x = 0
                 enemy.change_y = 0
+ 
 
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['enemies'])
         if colliding:
@@ -304,7 +327,6 @@ class MyGame(arcade.View):
             self.player.center_x = 100
             self.player.center_y = 100
         
-    
 
         #if losing all health: send to ending screen
         if len(self.HUD['handcuffs']) == 0:
@@ -312,10 +334,10 @@ class MyGame(arcade.View):
             self.window.show_view(end_view)
 
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['nextlevel'])
-        if colliding:
+        if colliding and self.score == 5:
             self.level += 1
+            self.reset_score
             self.setup()
-
         
         # Calculate speed based on the keys pressed.
         self.player.change_x = 0
@@ -337,7 +359,6 @@ class MyGame(arcade.View):
         self.scene.update()
         self.physics_engine.update()
         self.center_camera_on_player()
-
 
 game = Window()
 arcade.run()

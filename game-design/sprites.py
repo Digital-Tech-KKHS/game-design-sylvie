@@ -9,6 +9,11 @@ class Player(Entity):
         self.idle_animating = False
         self.idle_odo = 1
         self.current_chunk_texture = 0 
+        self.walk_textures = []
+
+        # for i in range(6):
+        #     texture = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'animation{i}.png'))
+        #     self.walk_textures.append(texture)
 
 class Npc(Entity):
     def __init__(self, properties=None):
@@ -21,6 +26,7 @@ class Enemy(Entity):
     def __init__(self, properties=None):
         path = Path(__file__).parent.joinpath('enemy2.png')
         super().__init__(path)
+
         print(properties)
         if properties is not None:
             for key, value in properties.items():
@@ -33,17 +39,12 @@ class Enemy(Entity):
         except:
             raise KeyError("Enemy without speed custom property found. Check tilemap")
         
+        # for i in range(6):
+        #     texture = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'enemy_animation{i}.png'))
+        #     self.walk_textures.append(texture)
+        
 
-    # def seek(self, target:Player):
-
-    #     if self.center_x > target.center_x:
-    #         self.change_x = -3
-    #     if self.center_x < target.center_x:
-    #         self.change_x = 3
-    #     if self.center_y > target.center_y:
-    #         self.change_y = -3
-    #     if self.center_y < target.center_y:
-    #         self.change_y = 3
+    
 
         
         
