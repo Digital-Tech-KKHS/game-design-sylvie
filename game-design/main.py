@@ -210,21 +210,41 @@ class MyGame(arcade.View):
                         SCREEN_HEIGHT-45
         )
 
+        colliding = arcade.check_for_collision_with_list(self.player, self.scene['signs'])
+        if colliding:
+            arcade.draw_rectangle_filled(
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT -700, 
+                800, 
+                100, 
+                arcade.color.ALMOND
+            )
+        
+            arcade.draw_text(
+                "DO NOT TAKE ANY APPLES", 
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT -700, 
+                arcade.color.BLACK, 
+                font_size=16, 
+                anchor_x="center", 
+                anchor_y="center"
+            )
+
         # Collision with NPC = pop up text.
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['npc'])
         if colliding:
             arcade.draw_rectangle_filled(
                 SCREEN_WIDTH // 2, 
-                SCREEN_HEIGHT // 2, 
+                SCREEN_HEIGHT -700, 
                 800, 
                 100, 
-                arcade.color.WHITE
+                arcade.color.ALMOND
             )
         
             arcade.draw_text(
                 self.dialogue_messages[self.dialogue_index], 
                 SCREEN_WIDTH // 2, 
-                SCREEN_HEIGHT // 2 + 20, 
+                SCREEN_HEIGHT -700, 
                 arcade.color.BLACK, 
                 font_size=16, 
                 anchor_x="center", 
@@ -234,16 +254,16 @@ class MyGame(arcade.View):
         if colliding and self.level == 1:
             arcade.draw_rectangle_filled(
                 SCREEN_WIDTH // 2, 
-                SCREEN_HEIGHT // 2, 
+                SCREEN_HEIGHT -700, 
                 800, 
                 100, 
-                arcade.color.WHITE
+                arcade.color.ALMOND
             )
         
             arcade.draw_text(
-                "Your second task is to sneak into the garden and get me 5 fruitd.", 
+                "Your second task is to sneak into the garden and get me 5 fruit.", 
                 SCREEN_WIDTH // 2, 
-                SCREEN_HEIGHT // 2 + 20, 
+                SCREEN_HEIGHT -700, 
                 arcade.color.BLACK, 
                 font_size=16, 
                 anchor_x="center", 
@@ -353,7 +373,6 @@ class MyGame(arcade.View):
         elif self.D_pressed and not self.A_pressed:
             self.player.change_x = PLAYER_SPEED
             
-
         self.player.update()
         self.player.update_animation()
         self.scene.update()
