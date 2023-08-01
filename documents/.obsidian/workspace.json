@@ -51,7 +51,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Sprints and tests/sprints/Sprint 5.md",
+                "file": "Game Design Document.md",
                 "mode": "source",
                 "source": false
               }
@@ -116,8 +116,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "83a27d35d91afd1d",
@@ -133,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Sprints and tests/sprints/Sprint 5.md",
+                "file": "Game Design Document.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,7 +149,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Sprints and tests/sprints/Sprint 5.md",
+                "file": "Game Design Document.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -173,7 +172,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Sprints and tests/sprints/Sprint 5.md"
+                "file": "Game Design Document.md"
               }
             }
           },
@@ -215,8 +214,8 @@
   },
   "active": "5c4f6bf3e577708d",
   "lastOpenFiles": [
-    "Sprints and tests/sprints/Sprint 4.md",
     "Sprints and tests/sprints/Sprint 5.md",
+    "Sprints and tests/sprints/Sprint 4.md",
     "Sprints and tests/tests & trials/Testing and trialling 5.md",
     "Sprints and tests/tests & trials/Testing and trialling 4.md",
     "Pasted image 20230801211451.png",

@@ -172,6 +172,7 @@ class MyGame(arcade.View):
         self.HUD = arcade.Scene()
         self.HUD.add_sprite_list('money')
         self.HUD.add_sprite_list('handcuffs')
+        self.HUD.add_sprite_list('trainticket')
         self.scene.add_sprite('player', self.player)
 
         if self.reset_score:
@@ -307,7 +308,7 @@ class MyGame(arcade.View):
                 anchor_x="center", 
                 anchor_y="center"
             )
-        if colliding and self.level == 2:
+        if colliding and self.level == 2 and self.score < 10:
             arcade.draw_rectangle_filled(
                 SCREEN_WIDTH // 2, 
                 SCREEN_HEIGHT -700, 
@@ -325,6 +326,42 @@ class MyGame(arcade.View):
                 anchor_x="center", 
                 anchor_y="center"
             )
+
+        if colliding and self.level ==2 and self.score == 10:
+            arcade.draw_rectangle_filled(
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT -700, 
+                800, 
+                100, 
+                arcade.color.ALMOND
+            )
+        
+            arcade.draw_text(
+                "Thankyou... you understand how hard it is to survive now... heres your train ticket.", 
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT -690, 
+                arcade.color.BLACK, 
+                font_size=16, 
+                anchor_x="center", 
+                anchor_y="center"
+            )  
+            arcade.draw_text(
+                "Now put those flowers in the box and you can go home...", 
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT -720, 
+                arcade.color.BLACK, 
+                font_size=16, 
+                anchor_x="center", 
+                anchor_y="center"
+            )  
+            self.scene.add_sprite_list('trainticket')
+            for i in range(1):
+                x = 40 + 45 * i
+                y = SCREEN_HEIGHT - 175
+                trainticket = arcade.Sprite(ROOT_FOLDER.joinpath('trainticket.png'), 2.5, center_x=x, center_y=y)
+                self.HUD['trainticket'].append(trainticket)
+
+
     # Cameras.
     def center_camera_on_player(self):
         camera_x = self.player.center_x - SCREEN_WIDTH / 2
@@ -429,7 +466,7 @@ class MyGame(arcade.View):
             self.window.show_view(lose_view)
 
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['nextlevel'])
-        if colliding: 
+        if colliding and self.score == 5: 
             self.level += 1
             self.reset_score
             self.setup()

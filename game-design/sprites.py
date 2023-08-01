@@ -34,11 +34,13 @@ class Player(Entity):
             self.current_texture = 0
         frame = self.current_texture // UPDATES_PER_FRAME
         direction = self.face_direction
-        self.texture = self.walk_textures[direction]
+        
 
         for i in range(6):
             texture = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'spriteanimationrunning{i}.png'))
             self.walk_textures.append(texture)
+
+        self.texture = self.walk_textures[frame][direction]
 
 class Npc(Entity):
     def __init__(self, properties=None):

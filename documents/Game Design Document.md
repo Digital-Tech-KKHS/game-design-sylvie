@@ -178,8 +178,10 @@ Choose 3 relevant implications. Discuss how you will ensure these are addressed.
 [Relevant implications](https://www.freybergdigital.co.nz/relevant-implications.html)
 
 ## Social
-my game has social implications because it explores the effects of climate change on society.
+My game will have social implications because it explores the effects of climate change on society. As well as this it will be kid friendly, it will have language that is easy to understand so it is available to a wide range of people. it will have a larger font size and be aesthetically pleasing so it will please the end users. I will make sure to test fonts, font sizes etc on people within the target audience so that I can ensure that all my features are aimed towards the correct audience.
 
-## {Implication 2}
+## Legal
+I will be creating all my own art, storyline and code myself so I can ensure that none of the work has been taken illegally. This means my game will have no copyright issues that can cause problems with hand-in. My game will also have no privacy issues because it does not collect information from the user. 
 
-## {Implication 3}
+## Usability
+My game will be easy for the user to understand and play. I am ensuring this because it will have basic WASD controls and the storyline will be explained and moved along by NPC's making it easy to understand where its going and continue playing. Errors will be prevented by my testing and trialling on end users so I can ensure that it will have no faults when being marked or played. by outcome will work as intended through end user testing and feedback given to me. I will change any faults or inconsistencies it has to make my game as usable and functional as possible.
