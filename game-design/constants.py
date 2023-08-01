@@ -10,6 +10,14 @@ MOVEMENT_SPEED = 2
 
 # Scaling to change characters from original size.
 CHARACTER_SCALING = 1.5
+NPC_SCALING = 1.2
 
 # Speed of player.
 PLAYER_SPEED = 2
+
+#facing direction
+RIGHT_FACING = 0
+LEFT_FACING = 1
+
+#animation speed
+UPDATES_PER_FRAME = 12

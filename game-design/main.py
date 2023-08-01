@@ -32,9 +32,17 @@ class StartView(arcade.View):
     # Writing on starting screen
     def on_draw(self):
         self.clear()
-        arcade.draw_text("Click anywhere to start", 
+        arcade.draw_text("Click anywhere to start!", 
             SCREEN_WIDTH / 2, 
             SCREEN_WIDTH / 2, 
+            arcade.color.WHITE, 
+            font_size=75, 
+            anchor_x="center"
+        )
+
+        arcade.draw_text("Speak to the train conductor first.", 
+            SCREEN_WIDTH / 2, 
+            SCREEN_HEIGHT / 2 - 100, 
             arcade.color.WHITE, 
             font_size=50, 
             anchor_x="center"
@@ -45,8 +53,8 @@ class StartView(arcade.View):
         Game_View = MyGame()
         self.window.show_view(Game_View)
 
-# Ending screen
-class EndView(arcade.View):
+# Losing screen
+class LoseView(arcade.View):
     def on_show_view(self):
         super().__init__()
         arcade.set_background_color(arcade.color.BLACK)
@@ -56,6 +64,36 @@ class EndView(arcade.View):
     def on_draw(self):
         self.clear()
         arcade.draw_text("You've been arrested >:(",
+            SCREEN_WIDTH / 2, 
+            SCREEN_WIDTH / 2, 
+            arcade.color.WHITE, 
+            font_size=50, 
+            anchor_x="center"
+        )
+        arcade.draw_text("Click anywhere to play again", 
+            self.window.width / 2, 
+            self.window.height / 2-75, 
+            arcade.color.WHITE, 
+            font_size=20, 
+            anchor_x="center"
+        )
+        
+    # Sending back to first level if clicking screen
+    def on_mouse_press(self, _x, _y, _button, _modifiers):
+        Game_View = MyGame()
+        self.window.show_view(Game_View)
+
+# Win screen
+class WinView(arcade.View):
+    def on_show_view(self):
+        super().__init__()
+        arcade.set_background_color(arcade.color.BLACK)
+        arcade.set_viewport(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT)
+
+    # Writing on ending screen
+    def on_draw(self):
+        self.clear()
+        arcade.draw_text("Congratulations! You got home safely!!",
             SCREEN_WIDTH / 2, 
             SCREEN_WIDTH / 2, 
             arcade.color.WHITE, 
@@ -261,7 +299,7 @@ class MyGame(arcade.View):
             )
         
             arcade.draw_text(
-                "Your second task is to sneak into the garden and get me 5 fruit.", 
+                "Your second task is to get me 5 of the apples from the trees.", 
                 SCREEN_WIDTH // 2, 
                 SCREEN_HEIGHT -700, 
                 arcade.color.BLACK, 
@@ -269,7 +307,24 @@ class MyGame(arcade.View):
                 anchor_x="center", 
                 anchor_y="center"
             )
-
+        if colliding and self.level == 2:
+            arcade.draw_rectangle_filled(
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT -700, 
+                800, 
+                100, 
+                arcade.color.ALMOND
+            )
+        
+            arcade.draw_text(
+                "Now finally, if you can get me 10 flowers for my wife, you can go home on my train.", 
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT -700, 
+                arcade.color.BLACK, 
+                font_size=16, 
+                anchor_x="center", 
+                anchor_y="center"
+            )
     # Cameras.
     def center_camera_on_player(self):
         camera_x = self.player.center_x - SCREEN_WIDTH / 2
@@ -327,6 +382,26 @@ class MyGame(arcade.View):
                 self.score += 1
                 arcade.play_sound(self.collection_sound)
 
+        # Apple collection/score
+        for apple in self.scene['apples']:
+            apple.on_update()
+            
+            colliding = arcade.check_for_collision_with_list(self.player, self.scene['apples'])
+            for apple in colliding:
+                apple.kill()
+                self.score += 1
+                arcade.play_sound(self.collection_sound)
+
+        # Flower collection/score
+        for flower in self.scene['flowers']:
+            flower.on_update()
+            
+            colliding = arcade.check_for_collision_with_list(self.player, self.scene['flowers'])
+            for flower in colliding:
+                flower.kill()
+                self.score += 1
+                arcade.play_sound(self.collection_sound)
+
         # Enemy seek function.
         for enemy in self.scene['enemies']:
             dx = self.player.center_x - enemy.center_x
@@ -350,14 +425,21 @@ class MyGame(arcade.View):
 
         #if losing all health: send to ending screen
         if len(self.HUD['handcuffs']) == 0:
-            end_view = EndView()
-            self.window.show_view(end_view)
+            lose_view = LoseView()
+            self.window.show_view(lose_view)
 
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['nextlevel'])
-        if colliding and self.score == 5:
+        if colliding: 
             self.level += 1
             self.reset_score
             self.setup()
+            
+        # Send to win view after completing level 3
+        colliding = arcade.check_for_collision_with_list(self.player, self.scene['win'])
+        if colliding and self.score == 10:
+            win_view = WinView()
+            self.window.show_view(win_view)
+
         
         # Calculate speed based on the keys pressed.
         self.player.change_x = 0

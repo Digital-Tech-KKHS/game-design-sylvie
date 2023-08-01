@@ -10,21 +10,14 @@ kanban-plugin: basic
 
 ## To do
 
-- [ ] Interactables (ticket, water, conductor)
 
 
 ## Doing
 
-- [ ] making city map in aseprite/tiled
-- [ ] character animation
-- [ ] create tilesets
-- [ ] police/enemy
 
 
 ## Testing \ Trialing
 
-- [ ] enemy design
-- [ ] what people prefer for enemy function
 
 
 ## Complete 🎈🎉✨
@@ -32,12 +25,21 @@ kanban-plugin: basic
 - [ ] begin game code
 - [ ] basic map of city
 - [ ] walls
+- [ ] police/enemy
+- [ ] create tilesets
+- [ ] enemy design
+- [ ] character animation
+- [ ] making city map in aseprite/tiled
+- [ ] Interactables (ticket, water, conductor)
+- [ ] what people prefer for enemy function
 - [ ] MVP
 - [ ] 2d vs topdown
 - [ ] start screen
 - [ ] win/ lose/ start screen
 - [ ] basic character design
 - [ ] physics engine
+- [ ] level desing
+- [ ] npc
 
 
 
