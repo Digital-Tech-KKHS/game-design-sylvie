@@ -22,8 +22,6 @@ In this sprint I worked on both my code and art. After getting others to test my
 
 I worked on my tile sets for my game and finished my enemy character design. Next sprint I will get my map looking better as I think that's where my game is lacking most at the moment. I began to work on the animation for my character and enemy. 
 
-
-
 ## **Major Changes and Achievements Described**
 - enemies
 - physics engine
@@ -31,7 +29,7 @@ I worked on my tile sets for my game and finished my enemy character design. Nex
 - tile set progress
 ## **Brief Description of your testing**
 - I tested which movement people liked more for each physics engine. This was done through an A/B test and letting people have a go playing with each.
-- Testing out different code for enemy seek function
+- Testing out different code for enemy seek function. This was unsuccessful and I got quite stuck with it but my testing is helping me figure out the problems with it.
 - Testing if my enemy was working as expected
 ## **Link to testing results/tables**
 [[Testing and trialling 3]]

@@ -29,6 +29,7 @@ https://youtu.be/bokRNTz14HM
 >
 ## Briefly describe the changes you have made based on this trial
 > - I changed my physics engine from pymunk physics engine to python arcade simple physics engine.
+> - I decided that because my game was not collision based it probably did not need such a complicated physics engine.
 
 ## Test 1:
 # Getting user input

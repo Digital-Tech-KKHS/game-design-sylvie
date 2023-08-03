@@ -31,7 +31,7 @@ I realised I had a lot more to do than I thought in this sprint so I really push
 - Maps
 - Character animation
 - Completing levels
-- Interactables.
+- Interactable items
 
 ## **Brief Description of your testing**
 - I ran A/B testing to decide whether or not my enemy was too fast. I thought that maybe their speed was making the game too difficult and after testing on end users they confirmed this.
@@ -48,5 +48,5 @@ I realised I had a lot more to do than I thought in this sprint so I really push
 ![[Pasted image 20230803194921.png]]
 
 ## Link to **Video of the game at the end of the sprint**
-https://youtu.be/3YLujzQVElg
+https://youtu.be/cGX1FsCS1Nw
 

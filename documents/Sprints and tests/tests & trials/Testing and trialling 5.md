@@ -16,10 +16,10 @@ Involved in the trial
 
 
 
-A:
+A: https://youtu.be/_pLG2AF4kUk
 
 
-B:
+B: https://youtu.be/eoqTFWaM1J8
 
 
 

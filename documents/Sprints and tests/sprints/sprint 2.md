@@ -53,3 +53,4 @@ https://youtu.be/NrO8iwRoRB8
 ## **Notes for next time, future improvements**
 - Work on enemies
 - Work on character movement
+- Map
