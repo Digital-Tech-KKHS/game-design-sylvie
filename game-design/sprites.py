@@ -42,6 +42,19 @@ class Player(Entity):
 
         self.texture = self.walk_textures[frame][direction]
 
+        if self.change_y != 0:
+            self.current_texture += 1
+        if self.current_texture == 6 * UPDATES_PER_FRAME:
+            self.current_texture = 0
+        frame = self.current_texture // UPDATES_PER_FRAME
+        direction = self.face_direction
+        
+
+        for i in range(6):
+            texture = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'spriteanimationrunning{i}.png'))
+            self.walk_textures.append(texture)
+
+        self.texture = self.walk_textures[frame][direction]
 class Npc(Entity):
     def __init__(self, properties=None):
         path = Path(__file__).parent.joinpath('npc1.png')
@@ -67,9 +80,7 @@ class Enemy(Entity):
         except:
             raise KeyError("Enemy without speed custom property found. Check tilemap")
         
-        # for i in range(6):
-        #     texture = arcade.load_texture_pair(Path(__file__).parent.joinpath(f'enemy_animation{i}.png'))
-        #     self.walk_textures.append(texture)
+        
         
 
     

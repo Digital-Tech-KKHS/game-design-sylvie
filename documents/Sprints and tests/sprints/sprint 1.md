@@ -36,8 +36,7 @@ I tested the controls of my game. I had them setup the same way as I did for my 
 I tested my game and found that my physics engine was making my character fall off the map as I had gravity on. As I don't have walls etc in my game at the moment, I removed it, fixing the issue.
 
 ## **Link to testing results/tables**
-obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trials%2FTesting%20and%20trialling%201 
-
+[[Testing and trialling 1]]
 
 # Project at the end of the sprint
 ## **KANBAN board at the end of the sprint**

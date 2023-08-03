@@ -42,31 +42,6 @@ B:
 
 Date: 6/5/2023
 
-```python
-    def on_key_release(self, key: int, modifiers: int):
-
-        if key == arcade.key.W:
-
-            self.W_pressed = False
-
-        elif key == arcade.key.A:
-
-            self.A_pressed = False
-
-        elif key == arcade.key.S:
-
-            self.S_pressed = False
-
-        elif key == arcade.key.D:
-
-            self.D_pressed = False
-```
-
-| Test Data                    | Expected                        | Observed                       |
-| ---------------------------- | ------------------------------- | ------------------------------ |
-| Player stops on key release    | on key release, player stops                         | player not stopping                       |
-
-This was a bit of a problem for me as I'm new to the physics engine I'm using. I realised that it was because I did not have damping on for my player/physics engine and originally set it to 0.5.
 
 ```python
         self.physics_engine.add_sprite(self.player,
@@ -77,8 +52,6 @@ This was a bit of a problem for me as I'm new to the physics engine I'm using. I
 
                                 moment=arcade.PymunkPhysicsEngine.MOMENT_INF,
 
-                                damping=DAMPING,
-
                                 collision_type="player",
 
                                 max_horizontal_velocity=PLAYER_MAX_HORIZONTAL_SPEED,
@@ -88,14 +61,14 @@ This was a bit of a problem for me as I'm new to the physics engine I'm using. I
 
 | Test Data                   | Expected                     | Observed                    |
 | --------------------------- | ---------------------------- | --------------------------- |
-| Player stops on key release | on key release, player stops | on key release player stops |
+| Physics engine | On key release, player stops | On key release player does not stop|
 
 
 
 ## Test 2:
 
 Date: 6/5/2023
-End user input told me that my characters movement was too drifty or like an ice skater so I made changes to my damping. I changed it from 0.5 to 0.1. This was part of the testing I was running on my physics engine.
+
 ```python
     DAMPING = 0.1
     
@@ -117,6 +90,8 @@ End user input told me that my characters movement was too drifty or like an ice
     
 ```
 
-| Test Data                    | Expected                        | Observed                       |
-| ---------------------------- | ------------------------------- | ------------------------------ |
-| Player drifting| Player drifting lessens                        | Expected                     |
+| Test Data       | Expected                           | Observed |
+| --------------- | ---------------------------------- | -------- |
+|Damping lower for less drifting | Player drifting lessens            | Expected |
+| Damping         | player stops moving on key release | Expected |
+

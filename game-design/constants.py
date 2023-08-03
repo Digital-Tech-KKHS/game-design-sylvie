@@ -10,7 +10,7 @@ MOVEMENT_SPEED = 2
 
 # Scaling to change characters from original size.
 CHARACTER_SCALING = 1.5
-NPC_SCALING = 1.2
+NPC_SCALING = 1.1
 
 # Speed of player.
 PLAYER_SPEED = 2

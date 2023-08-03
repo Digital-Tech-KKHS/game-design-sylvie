@@ -1,4 +1,4 @@
-_Date:_ 6th May
+_Date:_ 23rd June
 
 Involved in the trial
 >- Grace McDonald
@@ -80,6 +80,8 @@ Date: 6/5/2023
             enemy.kill()
 ```
 
-| Test Data                    | Expected                        | Observed                       |
-| ---------------------------- | ------------------------------- | ------------------------------ |
-| Enemy functions  | Enemy object in map replaced by PNG    | Expected    |
+| Test Data          | Expected                                                       | Observed                    |
+| ------------------ | -------------------------------------------------------------- | --------------------------- |
+| Enemy PNG          | Enemy object in map replaced by PNG                            | Expected                    |
+| New enemy          | New enemy is spawned in enemies center x/y                     | expected                    |
+| Replacing of tiles | All the enemy objects in map 'enemy_layer' are replaced by PNG | One is left as tile not PNG |

@@ -150,8 +150,8 @@ class MyGame(arcade.View):
         self.enemy_list = arcade.SpriteList()
         self.npc_list = arcade.SpriteList()
 
-        self.player.center_x = 100 
-        self.player.center_y = 100 
+        self.player.center_x = 40
+        self.player.center_y = 120
 
         # Size of sprites.
         self.player.scale = 0.8
@@ -249,6 +249,26 @@ class MyGame(arcade.View):
                         SCREEN_HEIGHT-45
         )
 
+        colliding = arcade.check_for_collision_with_list(self.player, self.scene['signs2'])
+        if colliding:
+            arcade.draw_rectangle_filled(
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT -700, 
+                800, 
+                100, 
+                arcade.color.ALMOND
+            )
+        
+            arcade.draw_text(
+                "DO NOT TOUCH WATER: POLLUTED", 
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT -700, 
+                arcade.color.BLACK, 
+                font_size=16, 
+                anchor_x="center", 
+                anchor_y="center"
+            )
+
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['signs'])
         if colliding:
             arcade.draw_rectangle_filled(
@@ -320,7 +340,17 @@ class MyGame(arcade.View):
             arcade.draw_text(
                 "Now finally, if you can get me 10 flowers for my wife, you can go home on my train.", 
                 SCREEN_WIDTH // 2, 
-                SCREEN_HEIGHT -700, 
+                SCREEN_HEIGHT -690, 
+                arcade.color.BLACK, 
+                font_size=16, 
+                anchor_x="center", 
+                anchor_y="center"
+            )
+
+            arcade.draw_text(
+                "Come talk to me when you have them.", 
+                SCREEN_WIDTH // 2, 
+                SCREEN_HEIGHT -720, 
                 arcade.color.BLACK, 
                 font_size=16, 
                 anchor_x="center", 
@@ -357,7 +387,7 @@ class MyGame(arcade.View):
             self.scene.add_sprite_list('trainticket')
             for i in range(1):
                 x = 40 + 45 * i
-                y = SCREEN_HEIGHT - 175
+                y = SCREEN_HEIGHT - 200
                 trainticket = arcade.Sprite(ROOT_FOLDER.joinpath('trainticket.png'), 2.5, center_x=x, center_y=y)
                 self.HUD['trainticket'].append(trainticket)
 
@@ -396,7 +426,7 @@ class MyGame(arcade.View):
 
     # Dialogue on mouse press.
     def on_mouse_press(self, x: int, y: int, button: int, modifiers: int):
-        index = (self.dialogue_index + 1) % len(self.dialogue_messages)
+        index = (self.dialogue_index + 1) 
         
         if self.dialogue_active:
             if button == arcade.MOUSE_BUTTON_LEFT:
@@ -456,8 +486,8 @@ class MyGame(arcade.View):
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['enemies'])
         if colliding:
             self.HUD['handcuffs'][-1].kill()
-            self.player.center_x = 100
-            self.player.center_y = 100
+            self.player.center_x = 175
+            self.player.center_y = 150
         
 
         #if losing all health: send to ending screen

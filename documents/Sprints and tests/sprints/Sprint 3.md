@@ -34,7 +34,7 @@ I worked on my tile sets for my game and finished my enemy character design. Nex
 - Testing out different code for enemy seek function
 - Testing if my enemy was working as expected
 ## **Link to testing results/tables**
-obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trials%2FTesting%20and%20trialling%203 
+[[Testing and trialling 3]]
 
 # Project at the end of the sprint
 ## **KANBAN board at the end of the sprint**

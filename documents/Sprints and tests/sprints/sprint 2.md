@@ -40,7 +40,7 @@ During the week I ran some tests on movement and controls and found a few issues
 
 
 ## **Link to testing results/tables**
-obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trials%2FTesting%20and%20trialing%202 
+[[Testing and trialling 2]]
 
 # Project at the end of the sprint
 ## **KANBAN board at the end of the sprint**

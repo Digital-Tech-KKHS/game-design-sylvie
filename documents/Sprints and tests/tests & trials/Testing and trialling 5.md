@@ -1,4 +1,4 @@
-_Date:_ 6th May
+_Date:_ 3rd August
 
 Involved in the trial
 >- Grace McDonald
@@ -6,81 +6,93 @@ Involved in the trial
 >- Charley Kate
 >- Simone Wu
 >- Josiah Beale
->- Jasper sharp
 
 ## Trial goal:
-> Find out which enemy design people preferred more.
+>To find out if my enemies are too fast or not.
 
 
 ## Describe the trail
->I asked people from inside and outside my class which character they preferred. I told them B was ai and A was original. the people doing this test knew what the rest of my game looked like so were able to make a judgement on which suited it more.
+> The trial goal is to test which enemy speed that people prefer. I need feedback on whether my enemies speed is too fast, making the game too hard. I let people play through my final game and give their opinions on whether it should be slowed down to make the game better to play.
 
 
 
 A:
-![[Pasted image 20230723150724.png | 100]]
+
 
 B:
-![[Pasted image 20230723160503.png | 100]]
+
 
 
 ## Results
-> - Charley, Josiah, Simone and Jasper both liked B more but as they have seen my game before, told me that it would look out of place and to use my own design.
-> - The rest preferred mine and knew it would fit the game more and said to use that as it would be more simple to animate.
+> - Collectively, everyone decided that they were too fast. 
+> - Feedback I got from Grace was that the game was too hard to complete and it got frustrating.
 >
 ## Briefly describe the changes you have made based on this trial
-> - These results have told me which is the best option to go with. I do not want my characters to look out of place in my games world so I will take their advice.
-> - I chose to use my own design over AI design.
+> - With the feedback/results I have received I decided to slow the speeds of my enemies down. Instead of having them at 4/5 I set them from 2-4.
+> - I made it so that on the first levels they are slower and there are less of them and as the levels increased in difficulty, they got faster and there were more of them. This means you have to be more strategical about getting around them and winning.
 
 ## Test 1:
 # Getting user input
 
 Date: 6/5/2023
-(enemy speed)
+
 
 ```python
-   def seek(self, target:Player):
+ def on_mouse_press(self, x: int, y: int, button: int, modifiers: int):
 
-  
+        index = (self.dialogue_index + 1) 
 
-        if self.center_x > target.center_x:
+        if self.dialogue_active:
 
-            self.change_x = -3
+            if button == arcade.MOUSE_BUTTON_LEFT:
 
-        if self.center_x < target.center_x:
+                self.dialogue_index = index  
 
-            self.change_x = 3
+        if self.dialogue_index == 4:
 
-        if self.center_y > target.center_y:
+            if button == arcade.MOUSE_BUTTON_LEFT:
 
-            self.change_y = -3
-
-        if self.center_y < target.center_y:
-
-            self.change_y = 3
+                self.dialogue_active = None
 ```
 
-| Test Data                    | Expected                        | Observed                       |
-| ---------------------------- | ------------------------------- | ------------------------------ |
-| Seek function    | Enemy seeks player target                        | Enemy did not seek Player                     |
+| Test Data      | Expected                              | Observed |
+| -------------- | ------------------------------------- | -------- |
+| Dialogue index | Dialogue moves forward on left mouse click | Expected |
+| Dialogue stops | Dialogue stops when index = 4 and dialogue becomes inactive      | Expected |
+
+
 
 ## Test 2:
 
 
 ```python
-        for enemy in self.scene["enemy_layer"]:
+        for enemy in self.scene['enemies']:
 
-            new_enemy = Enemy(enemy.properties)
+            dx = self.player.center_x - enemy.center_x
 
-            new_enemy.center_x = enemy.center_x
+            dy = self.player.center_y - enemy.center_y
 
-            new_enemy.center_y = enemy.center_y
+            theta = math.atan2(dy, dx)
 
-            self.scene["enemies"].append(new_enemy)
+  
 
-            enemy.kill()
+            if math.dist(self.player.position, enemy.position) < 300:
+
+                enemy.change_x = math.cos(theta)*enemy.speed
+
+                enemy.change_y = math.sin(theta)*enemy.speed
+
+            else:
+
+                enemy.change_x = 0
+
+                enemy.change_y = 0
 ```
 
-| Test Data                    | Expected                        | Observed                       |
-| ---------------------------- | ------------------------------- | ------------------------------ |
-| Enemy functions  | Enemy object in map replaced by PNG    | Expected    |
+| Test Data      | Expected                                                       | Observed |
+| -------------- | -------------------------------------------------------------- | -------- |
+| Enemy seek     | Enemy seeks player at certain distance and incorporates speeds | Expected |
+| Locates player | dy/dx maths locates player                                     | Expected |
+
+
+

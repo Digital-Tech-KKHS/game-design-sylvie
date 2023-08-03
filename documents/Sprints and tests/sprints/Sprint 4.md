@@ -1,12 +1,12 @@
-3**Name:** Sylvie McDonald
+**Name:** Sylvie McDonald
 
-**Git Hash:** 
+**Git Hash:** edd90c92bacaac461f6dbd7b500fa4208c8c5261
 
-**Sprint Number:** 3
+**Sprint Number:** 4
 
-**Start Date:** 15/5/23
+**Start Date:** 7/6/23
 
-**End Date:** 2/6/23
+**End Date:** 23/6/23
 
 **Work hard rating**
 ☆☆☆☆
@@ -38,8 +38,7 @@ Unfortunately I missed quite a few lessons this sprint because of teacher strike
 
 
 ## **Link to testing results/tables**
-obsidian://open?vault=documents&file=Sprints%20and%20tests%2Ftests%20%26%20trials%2FTesting%20and%20trialling%204 
-
+[[Testing and trialling 4]]
 # Project at the end of the sprint
 ## **KANBAN board at the end of the sprint**
 ![[Pasted image 20230628102302.png]]
