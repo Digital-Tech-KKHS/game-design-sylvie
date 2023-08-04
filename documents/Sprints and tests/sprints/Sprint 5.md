@@ -1,6 +1,6 @@
 **Name:** Sylvie McDonald
 
-**Git Hash:** 
+**Git Hash:** (Pull final push)
 
 **Sprint Number:** 5
 
@@ -40,7 +40,6 @@ I realised I had a lot more to do than I thought in this sprint so I really push
 
 ## **Link to testing results/tables**
 [[Testing and trialling 5]]
-
 # Project at the end of the sprint
 ## **KANBAN board at the end of the sprint**
 ![[Pasted image 20230801211451.png]]

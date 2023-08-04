@@ -6,10 +6,9 @@ _Date:_ 3rd April
 Involved in the trial
 >- Grace McDonld
 >- Gabby Smythe
->- jasper sharp
->- charley kate
->- simone wu
->- josiah Beale
+>- Charley Kate
+>- Simone Wu
+>- Josiah Beale
 
 ## Trial goal:
 > To find whether people prefer topdown or angled top down.

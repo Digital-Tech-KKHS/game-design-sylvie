@@ -8,7 +8,7 @@ Involved in the trial
 >- Mrs Teacher
 
 ## Trial goal:
-> To Ensure the main menu screen of our app was intuative to use and aesthetically pleasing, present two colour options. 
+> To Ensure the main menu screen of our app was intuitive to use and aesthetically pleasing, present two colour options. 
 
 
 ## Describe the trail

@@ -3,7 +3,6 @@ _Date:_ 2nd June
 Involved in the trial
 >- Grace McDonald
 >- Gabby Smythe
->- Charley Kate
 >- Simone Wu
 >- Josiah Beale
 >- Jasper Sharp

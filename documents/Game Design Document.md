@@ -29,14 +29,16 @@ My game is set 100 years in the future, starting in farmland areas to show the e
 # Success Criteria
 Considering your intended audience and the objectives of your game come up with 5 or more criteria that you will use to determine if your game has been successful. 
 What evidence will you use to measure each criteria? 
-|     | Criteria                               |     | Evidence |     |     |     |
-| --- | -------------------------------------- | --- | -------- | --- | --- | --- |
-| 1   | user can install game and run it       |     |          |     |     |     |
-| 2   | user can understand how to do game     |     |          |     |     |     |
-| 3   | user can complete game                 |     |          |     |     |     |
-| 4   | user enjoys playing it                 |     |          |     |     |     |
-| 5   | user understood the themes of the game |     |          |     |     |     |
-| 6   | user enjoyed playing my game           |     |          |      |
+|     | Criteria                               | Evidence                                                |
+| --- | -------------------------------------- | ------------------------------------------------------- |
+| 1   | user can install game and run it       | Game is installed and working                           |
+| 2   | user can understand how to do game     | They can play through the game without getting confused |
+| 3   | user can complete game                 | User finishes game                                      |
+| 4   | user enjoys playing it                 | Positive feedback after and during playing              |
+| 5   | user understood the themes of the game | Came away with an understanding of what has happened    |
+
+  
+
 
 # Game Setting
 

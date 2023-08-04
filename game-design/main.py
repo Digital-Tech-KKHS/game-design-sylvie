@@ -53,14 +53,15 @@ class StartView(arcade.View):
         Game_View = MyGame()
         self.window.show_view(Game_View)
 
-# Losing screen
+# Losing screen.
 class LoseView(arcade.View):
+    """"Creates the view for when losing."""
     def on_show_view(self):
         super().__init__()
         arcade.set_background_color(arcade.color.BLACK)
         arcade.set_viewport(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT)
 
-    # Writing on ending screen
+    # Writing on ending screen.
     def on_draw(self):
         self.clear()
         arcade.draw_text("You've been arrested >:(",
@@ -78,13 +79,14 @@ class LoseView(arcade.View):
             anchor_x="center"
         )
         
-    # Sending back to first level if clicking screen
+    # Sending back to first level if clicking screen.
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         Game_View = MyGame()
         self.window.show_view(Game_View)
 
-# Win screen
+# Win screen.
 class WinView(arcade.View):
+    """Creating the view for if winning."""
     def on_show_view(self):
         super().__init__()
         arcade.set_background_color(arcade.color.BLACK)
@@ -108,7 +110,7 @@ class WinView(arcade.View):
             anchor_x="center"
         )
         
-    # Sending back to first level if clicking screen
+    # Sending back to first level if clicking screen.
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         Game_View = MyGame()
         self.window.show_view(Game_View)
@@ -145,6 +147,7 @@ class MyGame(arcade.View):
         self.odo = 0
 
     def setup(self):
+        # Lists.
         self.player = Player()
         self.wall_list = arcade.SpriteList()
         self.enemy_list = arcade.SpriteList()
@@ -162,19 +165,21 @@ class MyGame(arcade.View):
         tilemap_path = Path(__file__).parent.joinpath(f'map{self.level}.tmx')
         self.tilemap = arcade.load_tilemap(tilemap_path)
 
-        # Pull the sprite layers out of the tile map.
+        # Pull the wall layer out of the tile map.
         self.wall_list = self.tilemap.sprite_lists["walls"]
 
         self.scene = arcade.Scene.from_tilemap(self.tilemap)
         self.scene.add_sprite_list('enemies')
         self.scene.add_sprite_list('npc')
 
+        # Icons and sprites.
         self.HUD = arcade.Scene()
         self.HUD.add_sprite_list('money')
         self.HUD.add_sprite_list('handcuffs')
         self.HUD.add_sprite_list('trainticket')
         self.scene.add_sprite('player', self.player)
 
+        # Score logic.
         if self.reset_score:
             self.score = 0
         self.reset_score = True
@@ -219,13 +224,13 @@ class MyGame(arcade.View):
             npc.kill()
            
 
-    # Camera&physics.
+    # Camera & physics.
         gravity = (0, 0)
         self.physics_engine = arcade.PhysicsEngineSimple(self.player, self.scene['walls'])
         self.camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.HUD_camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
 
-    #NPC dialogue
+    # NPC dialogue.
         self.dialogue_messages = [
             "So you want to get home on my train...?",
             "Usually I dont allow thieves on, but maybe I could make use of you",
@@ -249,6 +254,7 @@ class MyGame(arcade.View):
                         SCREEN_HEIGHT-45
         )
 
+        # Creating pop up text for collision with signs.
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['signs2'])
         if colliding:
             arcade.draw_rectangle_filled(
@@ -269,6 +275,7 @@ class MyGame(arcade.View):
                 anchor_y="center"
             )
 
+        # Creating pop up text for collision with signs.
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['signs'])
         if colliding:
             arcade.draw_rectangle_filled(
@@ -309,7 +316,7 @@ class MyGame(arcade.View):
                 anchor_x="center", 
                 anchor_y="center"
             )
-        
+        # Different dialogue for level 1.
         if colliding and self.level == 1:
             arcade.draw_rectangle_filled(
                 SCREEN_WIDTH // 2, 
@@ -328,6 +335,8 @@ class MyGame(arcade.View):
                 anchor_x="center", 
                 anchor_y="center"
             )
+        
+        # Different dialogue for different points in level 2.
         if colliding and self.level == 2 and self.score < 10:
             arcade.draw_rectangle_filled(
                 SCREEN_WIDTH // 2, 
@@ -356,7 +365,7 @@ class MyGame(arcade.View):
                 anchor_x="center", 
                 anchor_y="center"
             )
-
+        # What happens when level is 2 and score is 10.
         if colliding and self.level ==2 and self.score == 10:
             arcade.draw_rectangle_filled(
                 SCREEN_WIDTH // 2, 
@@ -384,6 +393,8 @@ class MyGame(arcade.View):
                 anchor_x="center", 
                 anchor_y="center"
             )  
+
+            # Adding ticket icon on colliding with NPC.
             self.scene.add_sprite_list('trainticket')
             for i in range(1):
                 x = 40 + 45 * i
@@ -431,7 +442,8 @@ class MyGame(arcade.View):
         if self.dialogue_active:
             if button == arcade.MOUSE_BUTTON_LEFT:
                 self.dialogue_index = index  
-        
+
+        # Dialogue stops when it reaches 4. 
         if self.dialogue_index == 4:
             if button == arcade.MOUSE_BUTTON_LEFT:
                 self.dialogue_active = None
@@ -439,7 +451,7 @@ class MyGame(arcade.View):
 
     def on_update(self, delta_time: float):
 
-        # Water collection/score.a
+        # Water collection/score.
         for water in self.scene['water']:
             water.on_update()
             
@@ -449,7 +461,7 @@ class MyGame(arcade.View):
                 self.score += 1
                 arcade.play_sound(self.collection_sound)
 
-        # Apple collection/score
+        # Apple collection/score.
         for apple in self.scene['apples']:
             apple.on_update()
             
@@ -459,7 +471,7 @@ class MyGame(arcade.View):
                 self.score += 1
                 arcade.play_sound(self.collection_sound)
 
-        # Flower collection/score
+        # Flower collection/score.
         for flower in self.scene['flowers']:
             flower.on_update()
             
@@ -469,7 +481,7 @@ class MyGame(arcade.View):
                 self.score += 1
                 arcade.play_sound(self.collection_sound)
 
-        # Enemy seek function.
+        # Enemy seek function, locating of player.
         for enemy in self.scene['enemies']:
             dx = self.player.center_x - enemy.center_x
             dy = self.player.center_y - enemy.center_y
@@ -482,7 +494,7 @@ class MyGame(arcade.View):
                 enemy.change_x = 0
                 enemy.change_y = 0
  
-
+        # Collision with enemies kiling handcuffs item.
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['enemies'])
         if colliding:
             self.HUD['handcuffs'][-1].kill()
@@ -490,11 +502,12 @@ class MyGame(arcade.View):
             self.player.center_y = 150
         
 
-        #if losing all health: send to ending screen
+        # If all handcuffs lost: send to ending screen.
         if len(self.HUD['handcuffs']) == 0:
             lose_view = LoseView()
             self.window.show_view(lose_view)
 
+        # Moving onto next level.
         colliding = arcade.check_for_collision_with_list(self.player, self.scene['nextlevel'])
         if colliding and self.score == 5: 
             self.level += 1
