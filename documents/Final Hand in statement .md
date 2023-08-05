@@ -19,16 +19,16 @@
 
 |          **Asset Name**          | **Created/Creator** | **License** |
 |:--------------------------------:|:-------------------:|:-----------:|
-| Spriterunninganimation.png (0-5) |         Me          |  like this  |
-|          Map.tmx (0-2)           |         Me          |  like this  |
-|         real_tileset.png         |         Me          |  like this  |
-|             npc1.png             |         Me          |  like this  |
-|            money.png             |         Me          |             |
-|          Handcuffs.png           |         Me          |             |
-|            drone.png             |         Me          |             |
-|      spritefrontfacing.png       |         Me          |             |
-|        tileset_1test.png         |         Me          |             |
-|         trainticket.png          |         Me          |             |
+| Spriterunninganimation.png (0-5) |         Me          |    open     |
+|          Map.tmx (0-2)           |         Me          |    open     |
+|         real_tileset.png         |         Me          |    open     |
+|             npc1.png             |         Me          |    open     |
+|            money.png             |         Me          |    open     |
+|          Handcuffs.png           |         Me          |    open     |
+|            drone.png             |         Me          |    open     |
+|      spritefrontfacing.png       |         Me          |    open     |
+|        tileset_1test.png         |         Me          |    open     |
+|         trainticket.png          |         Me          |    open     |
 
 
 
